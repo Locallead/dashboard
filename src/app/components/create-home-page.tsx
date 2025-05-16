@@ -147,7 +147,7 @@ export default function CreateHomePage({ id }: { id: string }) {
           <Accordion
             type="single"
             collapsible
-            className="w-full h-fit py-4"
+            className="w-full flex flex-col gap-4 h-fit pb-8 py-4"
             defaultValue="hero"
           >
             <AccordionItem value="hero" className="border rounded-md px-4 mb-4">

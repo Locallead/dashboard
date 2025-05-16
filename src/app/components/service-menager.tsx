@@ -42,7 +42,6 @@ export function ServiceManager({
   const [isLoading, setIsLoading] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
 
-  // Function to check if services have changed
   const checkForChanges = (currentServices: Service[]) => {
     if (currentServices.length !== initServices?.length) {
       return true;
@@ -58,7 +57,6 @@ export function ServiceManager({
     });
   };
 
-  // Update hasChanges whenever services change
   useEffect(() => {
     setHasChanges(checkForChanges(services));
   }, [services]);
@@ -86,7 +84,6 @@ export function ServiceManager({
       );
       setEditingId(null);
     } else {
-      // Add new service
       const newService: Service = {
         id: Date.now().toString(),
         name: serviceName,

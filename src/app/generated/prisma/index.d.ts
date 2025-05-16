@@ -1102,6 +1102,7 @@ export namespace Prisma {
     theme: number
     services: number
     state: number
+    locationPages: number
     servicePages: number
     _all: number
   }
@@ -1154,6 +1155,7 @@ export namespace Prisma {
     theme?: true
     services?: true
     state?: true
+    locationPages?: true
     servicePages?: true
     _all?: true
   }
@@ -1245,6 +1247,7 @@ export namespace Prisma {
     theme: string
     services: JsonValue | null
     state: string
+    locationPages: JsonValue | null
     servicePages: JsonValue | null
     _count: BusinessCountAggregateOutputType | null
     _min: BusinessMinAggregateOutputType | null
@@ -1280,6 +1283,7 @@ export namespace Prisma {
     theme?: boolean
     services?: boolean
     state?: boolean
+    locationPages?: boolean
     servicePages?: boolean
     homePage?: boolean | Business$homePageArgs<ExtArgs>
     locations?: boolean | Business$locationsArgs<ExtArgs>
@@ -1301,6 +1305,7 @@ export namespace Prisma {
     theme?: boolean
     services?: boolean
     state?: boolean
+    locationPages?: boolean
     servicePages?: boolean
   }, ExtArgs["result"]["business"]>
 
@@ -1319,6 +1324,7 @@ export namespace Prisma {
     theme?: boolean
     services?: boolean
     state?: boolean
+    locationPages?: boolean
     servicePages?: boolean
   }
 
@@ -1350,6 +1356,7 @@ export namespace Prisma {
       theme: string
       services: Prisma.JsonValue | null
       state: string
+      locationPages: Prisma.JsonValue | null
       servicePages: Prisma.JsonValue | null
     }, ExtArgs["result"]["business"]>
     composites: {}
@@ -1760,6 +1767,7 @@ export namespace Prisma {
     readonly theme: FieldRef<"Business", 'String'>
     readonly services: FieldRef<"Business", 'Json'>
     readonly state: FieldRef<"Business", 'String'>
+    readonly locationPages: FieldRef<"Business", 'Json'>
     readonly servicePages: FieldRef<"Business", 'Json'>
   }
     
@@ -3963,6 +3971,7 @@ export namespace Prisma {
     theme: 'theme',
     services: 'services',
     state: 'state',
+    locationPages: 'locationPages',
     servicePages: 'servicePages'
   };
 
@@ -4096,6 +4105,7 @@ export namespace Prisma {
     theme?: StringFilter<"Business"> | string
     services?: JsonNullableFilter<"Business">
     state?: StringFilter<"Business"> | string
+    locationPages?: JsonNullableFilter<"Business">
     servicePages?: JsonNullableFilter<"Business">
     homePage?: XOR<HomePageNullableRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
@@ -4116,6 +4126,7 @@ export namespace Prisma {
     theme?: SortOrder
     services?: SortOrderInput | SortOrder
     state?: SortOrder
+    locationPages?: SortOrderInput | SortOrder
     servicePages?: SortOrderInput | SortOrder
     homePage?: HomePageOrderByWithRelationInput
     locations?: LocationOrderByRelationAggregateInput
@@ -4139,6 +4150,7 @@ export namespace Prisma {
     theme?: StringFilter<"Business"> | string
     services?: JsonNullableFilter<"Business">
     state?: StringFilter<"Business"> | string
+    locationPages?: JsonNullableFilter<"Business">
     servicePages?: JsonNullableFilter<"Business">
     homePage?: XOR<HomePageNullableRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
@@ -4159,6 +4171,7 @@ export namespace Prisma {
     theme?: SortOrder
     services?: SortOrderInput | SortOrder
     state?: SortOrder
+    locationPages?: SortOrderInput | SortOrder
     servicePages?: SortOrderInput | SortOrder
     _count?: BusinessCountOrderByAggregateInput
     _max?: BusinessMaxOrderByAggregateInput
@@ -4183,6 +4196,7 @@ export namespace Prisma {
     theme?: StringWithAggregatesFilter<"Business"> | string
     services?: JsonNullableWithAggregatesFilter<"Business">
     state?: StringWithAggregatesFilter<"Business"> | string
+    locationPages?: JsonNullableWithAggregatesFilter<"Business">
     servicePages?: JsonNullableWithAggregatesFilter<"Business">
   }
 
@@ -4291,6 +4305,7 @@ export namespace Prisma {
     theme?: string
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
     locations?: LocationCreateNestedManyWithoutBusinessInput
@@ -4311,6 +4326,7 @@ export namespace Prisma {
     theme?: string
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
@@ -4331,6 +4347,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
     locations?: LocationUpdateManyWithoutBusinessNestedInput
@@ -4351,6 +4368,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
@@ -4371,6 +4389,7 @@ export namespace Prisma {
     theme?: string
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -4389,6 +4408,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -4407,6 +4427,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
   }
 
@@ -4564,6 +4585,7 @@ export namespace Prisma {
     theme?: SortOrder
     services?: SortOrder
     state?: SortOrder
+    locationPages?: SortOrder
     servicePages?: SortOrder
   }
 
@@ -5025,6 +5047,7 @@ export namespace Prisma {
     theme?: string
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
   }
@@ -5044,6 +5067,7 @@ export namespace Prisma {
     theme?: string
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
   }
@@ -5079,6 +5103,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
   }
@@ -5098,6 +5123,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
   }
@@ -5117,6 +5143,7 @@ export namespace Prisma {
     theme?: string
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     locations?: LocationCreateNestedManyWithoutBusinessInput
   }
@@ -5136,6 +5163,7 @@ export namespace Prisma {
     theme?: string
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
   }
@@ -5171,6 +5199,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     locations?: LocationUpdateManyWithoutBusinessNestedInput
   }
@@ -5190,6 +5219,7 @@ export namespace Prisma {
     theme?: StringFieldUpdateOperationsInput | string
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
+    locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
   }

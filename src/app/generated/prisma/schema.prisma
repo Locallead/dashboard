@@ -9,23 +9,24 @@ datasource db {
 }
 
 model Business {
-  id           String     @id @default(uuid())
-  name         String
-  address      String
-  phone        String
-  city         String
-  email        String
-  hours        String
-  mapLink      String
-  facebook     String
-  description  String
-  html         String
-  theme        String     @default("1")
-  services     Json?      @default("[]")
-  state        String
-  homePage     HomePage?
-  locations    Location[]
-  servicePages Json?      @default("[]")
+  id            String     @id @default(uuid())
+  name          String
+  address       String
+  phone         String
+  city          String
+  email         String
+  hours         String
+  mapLink       String
+  facebook      String
+  description   String
+  html          String
+  theme         String     @default("1")
+  services      Json?      @default("[]")
+  state         String
+  locationPages Json?      @default("[]")
+  servicePages  Json?      @default("[]")
+  homePage      HomePage?
+  locations     Location[]
 }
 
 model Location {

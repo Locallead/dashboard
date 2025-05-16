@@ -44,10 +44,10 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarHeader className="bg-primary rounded my-2 text-white">
+          <SidebarHeader className="bg-primary rounded-md my-2 py-2 text-white">
             <Link href="/" className="flex items-center gap-2">
               <Plus className="w-4 h-4 block" />
-              <p className="block">Add a new business</p>
+              <p className="block text-sm">Add a new business</p>
             </Link>
           </SidebarHeader>
           <SidebarGroupContent>

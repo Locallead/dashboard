@@ -157,3 +157,27 @@ export async function getLocations({ id }: { id: string }) {
   });
   return locations?.locations || [];
 }
+
+export async function addLocationPage({ id, data }: { id: string; data: any }) {
+  try {
+    await prisma.business.update({
+      where: { id },
+      data: { locationPages: data },
+    });
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: "Failed to add location page" };
+  }
+}
+
+export async function addServicePage({ id, data }: { id: string; data: any }) {
+  try {
+    await prisma.business.update({
+      where: { id },
+      data: { servicePages: data },
+    });
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: "Failed to add service page" };
+  }
+}

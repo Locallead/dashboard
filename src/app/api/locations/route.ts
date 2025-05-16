@@ -11,7 +11,6 @@ export async function POST(req: Request) {
   try {
     const { prompt, referenceLocation } = await req.json();
 
-    // Define the schema for our location data
     const locationSchema = z.object({
       locations: z
         .array(
@@ -25,7 +24,6 @@ export async function POST(req: Request) {
         .describe("A list of locations with city and state information"),
     });
 
-    // Create a prompt based on whether we have a reference location
     let enhancedPrompt = prompt;
 
     if (referenceLocation) {
@@ -39,7 +37,6 @@ export async function POST(req: Request) {
       Ensure the state is provided as the standard two-letter code when applicable (e.g., CA for California).`;
     }
 
-    // Generate structured data using OpenAI
     const { object } = await generateObject({
       model: openai("gpt-4o"),
       schema: locationSchema,
@@ -47,7 +44,6 @@ export async function POST(req: Request) {
       temperature: 0.7,
     });
 
-    // Return the generated locations
     return Response.json(object);
   } catch (error) {
     console.error("Error generating locations:", error);
