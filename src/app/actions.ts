@@ -181,3 +181,14 @@ export async function addServicePage({ id, data }: { id: string; data: any }) {
     return { success: false, error: "Failed to add service page" };
   }
 }
+
+export async function deleteBusiness(id: string) {
+  try {
+    await prisma.business.delete({
+      where: { id },
+    });
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: "Failed to delete business" };
+  }
+}

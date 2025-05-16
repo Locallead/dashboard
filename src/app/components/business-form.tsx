@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -87,6 +87,10 @@ export default function BusinessForm() {
             result.error || "Failed to add business. Please try again.",
         });
       }
+
+      startTransition(() => {
+        router.refresh();
+      })
     } catch (error) {
       console.error("Form submission error:", error);
       toast.error("Error", {

@@ -206,7 +206,61 @@ export default function ServicePageForm({
         description: "Failed to generate service page content.",
       });
     } else {
-      form.reset(data);
+      const sanitizedData = {
+        hero: {
+          title: data.hero?.title || "",
+          description: data.hero?.description || "",
+        },
+        usp: {
+          title1: data.usp?.title1 || "",
+          title2: data.usp?.title2 || "",
+          title3: data.usp?.title3 || "",
+          description1: data.usp?.description1 || "",
+          description2: data.usp?.description2 || "",
+          description3: data.usp?.description3 || "",
+        },
+        leftPicture: {
+          title: data.leftPicture?.title || "",
+          header: data.leftPicture?.header || "",
+          subHeader: data.leftPicture?.subHeader || "",
+          description: data.leftPicture?.description || "",
+        },
+        service: {
+          title: data.service?.title || "",
+          description: data.service?.description || "",
+          header: data.service?.header || "",
+        },
+        trust: {
+          title: data.trust?.title || "",
+          heading: data.trust?.heading || "",
+          quality1: data.trust?.quality1 || "",
+          quality2: data.trust?.quality2 || "",
+          quality3: data.trust?.quality3 || "",
+          quality4: data.trust?.quality4 || "",
+          quality5: data.trust?.quality5 || "",
+          quality6: data.trust?.quality6 || "",
+          description1: data.trust?.description1 || "",
+          description2: data.trust?.description2 || "",
+          description3: data.trust?.description3 || "",
+          description4: data.trust?.description4 || "",
+          description5: data.trust?.description5 || "",
+          description6: data.trust?.description6 || "",
+        },
+        map: {
+          title: data.map?.title || "",
+          description: data.map?.description || "",
+          heading: data.map?.heading || "",
+        },
+        cta: {
+          title: data.cta?.title || "",
+          link: data.cta?.link || "",
+        },
+        meta: {
+          title: data.meta?.title || "",
+          description: data.meta?.description || "",
+        },
+      };
+      form.reset(sanitizedData);
     }
     setIsGenerating(false);
   };
