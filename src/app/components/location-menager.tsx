@@ -43,17 +43,16 @@ interface Location {
   slug: string;
 }
 
-// Function to convert city name to a URL-friendly slug
 const slugify = (text: string): string => {
   return text
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, "-") // Replace spaces with hyphens
-    .replace(/[^\w-]+/g, "") // Remove all non-word characters
-    .replace(/--+/g, "-") // Replace multiple hyphens with single hyphen
-    .replace(/^-+/, "") // Trim hyphens from start
-    .replace(/-+$/, ""); // Trim hyphens from end
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
 };
 
 export function LocationManager({
@@ -93,7 +92,6 @@ export function LocationManager({
     const citySlug = slugify(city);
 
     if (editingId) {
-      // Update existing location
       setLocations(
         locations.map((loc) =>
           loc.id === editingId ? { ...loc, city, state, slug: citySlug } : loc
@@ -102,7 +100,6 @@ export function LocationManager({
       toast.success(`Updated ${city}, ${state}`);
       setEditingId(null);
     } else {
-      // Add new location
       const newLocation: Location = {
         id: Date.now().toString(),
         city,
@@ -113,7 +110,6 @@ export function LocationManager({
       toast.success(`Added ${city}, ${state}`);
     }
 
-    // Reset form
     setCity("");
     setState("");
   };
@@ -128,7 +124,6 @@ export function LocationManager({
     setLocations(locations.filter((loc) => loc.id !== id));
     toast.success("The location has been removed");
 
-    // If we're editing this location, reset the form
     if (editingId === id) {
       setCity("");
       setState("");
@@ -169,7 +164,6 @@ export function LocationManager({
 
       const data = await response.json();
 
-      // Add the generated locations to our state
       const newLocations = data.locations.map(
         (loc: { city: string; state: string }) => ({
           id: Date.now() + Math.random().toString(),

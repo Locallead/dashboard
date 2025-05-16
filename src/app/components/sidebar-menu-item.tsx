@@ -11,20 +11,18 @@ import {
 } from "lucide-react";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 
-// Map of icon names to icon components
 const iconMap: Record<string, LucideIcon> = {
   Home,
   Calendar,
   Inbox,
   Search,
   Settings,
-  // Add any other icons you need
 };
 
 interface SidebarMenuItemProps {
   title: string;
   url: string;
-  iconName: string; // Now we pass the icon name as a string
+  iconName: string;
 }
 
 export function SidebarMenuItemClient({
@@ -34,10 +32,8 @@ export function SidebarMenuItemClient({
 }: SidebarMenuItemProps) {
   const pathname = usePathname();
 
-  // Check if the current path matches the item's URL
   const isActive = pathname === url || pathname.startsWith(`${url}/`);
 
-  // Get the icon component from the map, or default to Home
   const Icon = iconMap[iconName] || Home;
 
   return (
