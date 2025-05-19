@@ -7,18 +7,24 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get("id");
 
   if (!id) {
-    return NextResponse.json({ error: "Business ID is required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Business ID is required" },
+      { status: 400 }
+    );
   }
 
   try {
     const business = await prisma.business.findUnique({
       where: { id },
-      include: { locations: true },
+      include: { locations: true, homePage: true },
     });
 
     return NextResponse.json(business);
   } catch (error) {
     console.error("Error fetching business:", error);
-    return NextResponse.json({ error: "Failed to fetch business" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch business" },
+      { status: 500 }
+    );
   }
 }

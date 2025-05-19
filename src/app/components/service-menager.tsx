@@ -16,6 +16,13 @@ import { PlusCircle, Trash2, Edit, Loader2Icon, BotIcon } from "lucide-react";
 import { toast } from "sonner";
 import { createServices } from "../actions";
 
+const generateSlug = (name: string): string => {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+};
+
 interface Service {
   id: string;
   name: string;
@@ -64,10 +71,7 @@ export function ServiceManager({
   const handleAddService = () => {
     if (!serviceName.trim()) return;
 
-    const slug = serviceName
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
+    const slug = generateSlug(serviceName);
 
     if (editingId) {
       setServices(
@@ -122,7 +126,6 @@ export function ServiceManager({
   };
 
   const generateServicesWithAI = async () => {
-    debugger;
     setIsLoading(true);
     const response = await fetch("/api/services", {
       method: "POST",
@@ -141,7 +144,13 @@ export function ServiceManager({
 
     const data = await response.json();
 
-    setServices(data.services);
+    // Ensure all services have proper slugs
+    const servicesWithSlugs = data.services.map((service: Service) => ({
+      ...service,
+      slug: generateSlug(service.name),
+    }));
+
+    setServices(servicesWithSlugs);
     toast.success("Services generated successfully");
     setIsLoading(false);
   };

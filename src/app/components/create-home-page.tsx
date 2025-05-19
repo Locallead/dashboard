@@ -67,6 +67,10 @@ type FormValues = {
     title: string;
     link: string;
   };
+  meta: {
+    title: string;
+    description: string;
+  };
 };
 
 export default function CreateHomePage({ id }: { id: string }) {
@@ -106,6 +110,7 @@ export default function CreateHomePage({ id }: { id: string }) {
       },
       map: { title: "", description: "", heading: "" },
       cta: { title: "", link: "" },
+      meta: { title: "", description: "" },
     },
   });
 
@@ -130,7 +135,7 @@ export default function CreateHomePage({ id }: { id: string }) {
 
     if (response.success) {
       toast.success("Home page created successfully");
-      reset(data); // Reset form to new values to mark as pristine
+      reset(data);
     } else {
       toast.error("Failed to create home page");
     }
@@ -619,6 +624,51 @@ export default function CreateHomePage({ id }: { id: string }) {
                       />
                     </div>
                   ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="meta" className="border rounded-md px-4 mb-4">
+              <AccordionTrigger className="py-4 text-lg font-medium">
+                Meta Tags
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 pt-2">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="metaTitle">Meta Title</Label>
+                    <Controller
+                      name="meta.title"
+                      control={control}
+                      render={({ field }) => (
+                        <Input
+                          id="metaTitle"
+                          value={
+                            typeof field.value === "string" ? field.value : ""
+                          }
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                          placeholder="Meta Title"
+                        />
+                      )}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="metaDescription">Meta Description</Label>
+                    <Controller
+                      name="meta.description"
+                      control={control}
+                      render={({ field }) => (
+                        <Textarea
+                          id="metaDescription"
+                          value={field.value}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                          placeholder="Meta Description"
+                          className="min-h-[80px]"
+                        />
+                      )}
+                    />
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>
