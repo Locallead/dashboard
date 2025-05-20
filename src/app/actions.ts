@@ -192,3 +192,21 @@ export async function deleteBusiness(id: string) {
     return { success: false, error: "Failed to delete business" };
   }
 }
+
+export async function updateBusinessSchema(id: string, schema: string) {
+  try {
+    await prisma.business.update({
+      where: { id },
+      data: { themeScript: schema },
+    });
+
+    revalidatePath("/");
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating business schema:", error);
+    return {
+      success: false,
+      error: "Failed to update business schema",
+    };
+  }
+}

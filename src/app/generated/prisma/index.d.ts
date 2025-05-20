@@ -1068,6 +1068,7 @@ export namespace Prisma {
     description: string | null
     html: string | null
     theme: string | null
+    themeScript: string | null
     state: string | null
   }
 
@@ -1084,6 +1085,7 @@ export namespace Prisma {
     description: string | null
     html: string | null
     theme: string | null
+    themeScript: string | null
     state: string | null
   }
 
@@ -1100,6 +1102,7 @@ export namespace Prisma {
     description: number
     html: number
     theme: number
+    themeScript: number
     services: number
     state: number
     locationPages: number
@@ -1121,6 +1124,7 @@ export namespace Prisma {
     description?: true
     html?: true
     theme?: true
+    themeScript?: true
     state?: true
   }
 
@@ -1137,6 +1141,7 @@ export namespace Prisma {
     description?: true
     html?: true
     theme?: true
+    themeScript?: true
     state?: true
   }
 
@@ -1153,6 +1158,7 @@ export namespace Prisma {
     description?: true
     html?: true
     theme?: true
+    themeScript?: true
     services?: true
     state?: true
     locationPages?: true
@@ -1245,6 +1251,7 @@ export namespace Prisma {
     description: string
     html: string
     theme: string
+    themeScript: string | null
     services: JsonValue | null
     state: string
     locationPages: JsonValue | null
@@ -1281,6 +1288,7 @@ export namespace Prisma {
     description?: boolean
     html?: boolean
     theme?: boolean
+    themeScript?: boolean
     services?: boolean
     state?: boolean
     locationPages?: boolean
@@ -1303,6 +1311,7 @@ export namespace Prisma {
     description?: boolean
     html?: boolean
     theme?: boolean
+    themeScript?: boolean
     services?: boolean
     state?: boolean
     locationPages?: boolean
@@ -1322,6 +1331,7 @@ export namespace Prisma {
     description?: boolean
     html?: boolean
     theme?: boolean
+    themeScript?: boolean
     services?: boolean
     state?: boolean
     locationPages?: boolean
@@ -1354,6 +1364,7 @@ export namespace Prisma {
       description: string
       html: string
       theme: string
+      themeScript: string | null
       services: Prisma.JsonValue | null
       state: string
       locationPages: Prisma.JsonValue | null
@@ -1765,6 +1776,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Business", 'String'>
     readonly html: FieldRef<"Business", 'String'>
     readonly theme: FieldRef<"Business", 'String'>
+    readonly themeScript: FieldRef<"Business", 'String'>
     readonly services: FieldRef<"Business", 'Json'>
     readonly state: FieldRef<"Business", 'String'>
     readonly locationPages: FieldRef<"Business", 'Json'>
@@ -3969,6 +3981,7 @@ export namespace Prisma {
     description: 'description',
     html: 'html',
     theme: 'theme',
+    themeScript: 'themeScript',
     services: 'services',
     state: 'state',
     locationPages: 'locationPages',
@@ -4103,6 +4116,7 @@ export namespace Prisma {
     description?: StringFilter<"Business"> | string
     html?: StringFilter<"Business"> | string
     theme?: StringFilter<"Business"> | string
+    themeScript?: StringNullableFilter<"Business"> | string | null
     services?: JsonNullableFilter<"Business">
     state?: StringFilter<"Business"> | string
     locationPages?: JsonNullableFilter<"Business">
@@ -4124,6 +4138,7 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
+    themeScript?: SortOrderInput | SortOrder
     services?: SortOrderInput | SortOrder
     state?: SortOrder
     locationPages?: SortOrderInput | SortOrder
@@ -4148,6 +4163,7 @@ export namespace Prisma {
     description?: StringFilter<"Business"> | string
     html?: StringFilter<"Business"> | string
     theme?: StringFilter<"Business"> | string
+    themeScript?: StringNullableFilter<"Business"> | string | null
     services?: JsonNullableFilter<"Business">
     state?: StringFilter<"Business"> | string
     locationPages?: JsonNullableFilter<"Business">
@@ -4169,6 +4185,7 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
+    themeScript?: SortOrderInput | SortOrder
     services?: SortOrderInput | SortOrder
     state?: SortOrder
     locationPages?: SortOrderInput | SortOrder
@@ -4194,6 +4211,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Business"> | string
     html?: StringWithAggregatesFilter<"Business"> | string
     theme?: StringWithAggregatesFilter<"Business"> | string
+    themeScript?: StringNullableWithAggregatesFilter<"Business"> | string | null
     services?: JsonNullableWithAggregatesFilter<"Business">
     state?: StringWithAggregatesFilter<"Business"> | string
     locationPages?: JsonNullableWithAggregatesFilter<"Business">
@@ -4303,6 +4321,7 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
+    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -4324,6 +4343,7 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
+    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -4345,6 +4365,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -4366,6 +4387,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -4387,6 +4409,7 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
+    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -4406,6 +4429,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -4425,6 +4449,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -4527,6 +4552,21 @@ export namespace Prisma {
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
   export type JsonNullableFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
@@ -4583,6 +4623,7 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
+    themeScript?: SortOrder
     services?: SortOrder
     state?: SortOrder
     locationPages?: SortOrder
@@ -4602,6 +4643,7 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
+    themeScript?: SortOrder
     state?: SortOrder
   }
 
@@ -4618,6 +4660,7 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
+    themeScript?: SortOrder
     state?: SortOrder
   }
 
@@ -4637,6 +4680,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -4778,6 +4839,10 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type HomePageUpdateOneWithoutBusinessNestedInput = {
     create?: XOR<HomePageCreateWithoutBusinessInput, HomePageUncheckedCreateWithoutBusinessInput>
     connectOrCreate?: HomePageCreateOrConnectWithoutBusinessInput
@@ -4868,6 +4933,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -4894,6 +4973,23 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -5045,6 +5141,7 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
+    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -5065,6 +5162,7 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
+    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -5101,6 +5199,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -5121,6 +5220,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -5141,6 +5241,7 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
+    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -5161,6 +5262,7 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
+    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -5197,6 +5299,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
@@ -5217,6 +5320,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue

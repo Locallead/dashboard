@@ -5,6 +5,7 @@ import { LocationManager } from "@/app/components/location-menager";
 import LocationPageForm, {
   FormValues,
 } from "@/app/components/location-page-form";
+import SchemaForm from "@/app/components/schema-form";
 import { ServiceManager } from "@/app/components/service-menager";
 import ServicePageForm from "@/app/components/service-page-form";
 import { notFound } from "next/navigation";
@@ -64,6 +65,7 @@ export default async function Page({
     <div className="space-y-20">
       <BusinessEditForm business={validBusiness} />
       <CreateHomePage id={id} />
+      <SchemaForm id={id} />
       <ServiceManager
         id={id}
         initServices={services}

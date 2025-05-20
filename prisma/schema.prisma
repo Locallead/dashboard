@@ -25,6 +25,7 @@ model Business {
   state         String
   locationPages Json?      @default("[]")
   servicePages  Json?      @default("[]")
+  themeScript   String?
   homePage      HomePage?
   locations     Location[]
 }
