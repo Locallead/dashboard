@@ -210,3 +210,19 @@ export async function updateBusinessSchema(id: string, schema: string) {
     };
   }
 }
+
+export async function updateBusinessTheme(id: string, theme: string) {
+  try {
+    await prisma.business.update({
+      where: { id },
+      data: { theme: theme.toString() },
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating business theme:", error);
+    return {
+      success: false,
+      error: "Failed to update business theme",
+    };
+  }
+}
