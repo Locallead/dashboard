@@ -137,7 +137,8 @@ exports.Prisma.BusinessScalarFieldEnum = {
   state: 'state',
   locationPages: 'locationPages',
   servicePages: 'servicePages',
-  themeScript: 'themeScript'
+  themeScript: 'themeScript',
+  logo: 'logo'
 };
 
 exports.Prisma.LocationScalarFieldEnum = {

@@ -226,3 +226,24 @@ export async function updateBusinessTheme(id: string, theme: string) {
     };
   }
 }
+
+export async function updateBusinessLogo(businessId: string, logoUrl: string) {
+  try {
+    await prisma.business.update({
+      where: { id: businessId },
+      data: { logo: logoUrl },
+    });
+
+    revalidatePath("/");
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating business logo:", error);
+    return {
+      success: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Failed to update business logo",
+    };
+  }
+}

@@ -33,7 +33,7 @@ export default function ThemePicker({
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 flex-1">
       <h2 className="text-2xl font-bold">Choose a theme</h2>
       <div className="flex gap-4">
         <Image

@@ -1106,6 +1106,7 @@ export namespace Prisma {
     theme: string | null
     state: string | null
     themeScript: string | null
+    logo: string | null
   }
 
   export type BusinessMaxAggregateOutputType = {
@@ -1123,6 +1124,7 @@ export namespace Prisma {
     theme: string | null
     state: string | null
     themeScript: string | null
+    logo: string | null
   }
 
   export type BusinessCountAggregateOutputType = {
@@ -1143,6 +1145,7 @@ export namespace Prisma {
     locationPages: number
     servicePages: number
     themeScript: number
+    logo: number
     _all: number
   }
 
@@ -1162,6 +1165,7 @@ export namespace Prisma {
     theme?: true
     state?: true
     themeScript?: true
+    logo?: true
   }
 
   export type BusinessMaxAggregateInputType = {
@@ -1179,6 +1183,7 @@ export namespace Prisma {
     theme?: true
     state?: true
     themeScript?: true
+    logo?: true
   }
 
   export type BusinessCountAggregateInputType = {
@@ -1199,6 +1204,7 @@ export namespace Prisma {
     locationPages?: true
     servicePages?: true
     themeScript?: true
+    logo?: true
     _all?: true
   }
 
@@ -1292,6 +1298,7 @@ export namespace Prisma {
     locationPages: JsonValue | null
     servicePages: JsonValue | null
     themeScript: string | null
+    logo: string | null
     _count: BusinessCountAggregateOutputType | null
     _min: BusinessMinAggregateOutputType | null
     _max: BusinessMaxAggregateOutputType | null
@@ -1329,6 +1336,7 @@ export namespace Prisma {
     locationPages?: boolean
     servicePages?: boolean
     themeScript?: boolean
+    logo?: boolean
     homePage?: boolean | Business$homePageArgs<ExtArgs>
     locations?: boolean | Business$locationsArgs<ExtArgs>
     _count?: boolean | BusinessCountOutputTypeDefaultArgs<ExtArgs>
@@ -1352,6 +1360,7 @@ export namespace Prisma {
     locationPages?: boolean
     servicePages?: boolean
     themeScript?: boolean
+    logo?: boolean
   }, ExtArgs["result"]["business"]>
 
   export type BusinessSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1372,6 +1381,7 @@ export namespace Prisma {
     locationPages?: boolean
     servicePages?: boolean
     themeScript?: boolean
+    logo?: boolean
   }, ExtArgs["result"]["business"]>
 
   export type BusinessSelectScalar = {
@@ -1392,9 +1402,10 @@ export namespace Prisma {
     locationPages?: boolean
     servicePages?: boolean
     themeScript?: boolean
+    logo?: boolean
   }
 
-  export type BusinessOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "phone" | "city" | "email" | "hours" | "mapLink" | "facebook" | "description" | "html" | "theme" | "services" | "state" | "locationPages" | "servicePages" | "themeScript", ExtArgs["result"]["business"]>
+  export type BusinessOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "phone" | "city" | "email" | "hours" | "mapLink" | "facebook" | "description" | "html" | "theme" | "services" | "state" | "locationPages" | "servicePages" | "themeScript" | "logo", ExtArgs["result"]["business"]>
   export type BusinessInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     homePage?: boolean | Business$homePageArgs<ExtArgs>
     locations?: boolean | Business$locationsArgs<ExtArgs>
@@ -1427,6 +1438,7 @@ export namespace Prisma {
       locationPages: Prisma.JsonValue | null
       servicePages: Prisma.JsonValue | null
       themeScript: string | null
+      logo: string | null
     }, ExtArgs["result"]["business"]>
     composites: {}
   }
@@ -1869,6 +1881,7 @@ export namespace Prisma {
     readonly locationPages: FieldRef<"Business", 'Json'>
     readonly servicePages: FieldRef<"Business", 'Json'>
     readonly themeScript: FieldRef<"Business", 'String'>
+    readonly logo: FieldRef<"Business", 'String'>
   }
     
 
@@ -4405,7 +4418,8 @@ export namespace Prisma {
     state: 'state',
     locationPages: 'locationPages',
     servicePages: 'servicePages',
-    themeScript: 'themeScript'
+    themeScript: 'themeScript',
+    logo: 'logo'
   };
 
   export type BusinessScalarFieldEnum = (typeof BusinessScalarFieldEnum)[keyof typeof BusinessScalarFieldEnum]
@@ -4548,6 +4562,7 @@ export namespace Prisma {
     locationPages?: JsonNullableFilter<"Business">
     servicePages?: JsonNullableFilter<"Business">
     themeScript?: StringNullableFilter<"Business"> | string | null
+    logo?: StringNullableFilter<"Business"> | string | null
     homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }
@@ -4570,6 +4585,7 @@ export namespace Prisma {
     locationPages?: SortOrderInput | SortOrder
     servicePages?: SortOrderInput | SortOrder
     themeScript?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
     homePage?: HomePageOrderByWithRelationInput
     locations?: LocationOrderByRelationAggregateInput
   }
@@ -4595,6 +4611,7 @@ export namespace Prisma {
     locationPages?: JsonNullableFilter<"Business">
     servicePages?: JsonNullableFilter<"Business">
     themeScript?: StringNullableFilter<"Business"> | string | null
+    logo?: StringNullableFilter<"Business"> | string | null
     homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }, "id">
@@ -4617,6 +4634,7 @@ export namespace Prisma {
     locationPages?: SortOrderInput | SortOrder
     servicePages?: SortOrderInput | SortOrder
     themeScript?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
     _count?: BusinessCountOrderByAggregateInput
     _max?: BusinessMaxOrderByAggregateInput
     _min?: BusinessMinOrderByAggregateInput
@@ -4643,6 +4661,7 @@ export namespace Prisma {
     locationPages?: JsonNullableWithAggregatesFilter<"Business">
     servicePages?: JsonNullableWithAggregatesFilter<"Business">
     themeScript?: StringNullableWithAggregatesFilter<"Business"> | string | null
+    logo?: StringNullableWithAggregatesFilter<"Business"> | string | null
   }
 
   export type LocationWhereInput = {
@@ -4753,6 +4772,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: string | null
+    logo?: string | null
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
     locations?: LocationCreateNestedManyWithoutBusinessInput
   }
@@ -4775,6 +4795,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: string | null
+    logo?: string | null
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
   }
@@ -4797,6 +4818,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
     locations?: LocationUpdateManyWithoutBusinessNestedInput
   }
@@ -4819,6 +4841,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
   }
@@ -4841,6 +4864,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: string | null
+    logo?: string | null
   }
 
   export type BusinessUpdateManyMutationInput = {
@@ -4861,6 +4885,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BusinessUncheckedUpdateManyInput = {
@@ -4881,6 +4906,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type LocationCreateInput = {
@@ -5056,6 +5082,7 @@ export namespace Prisma {
     locationPages?: SortOrder
     servicePages?: SortOrder
     themeScript?: SortOrder
+    logo?: SortOrder
   }
 
   export type BusinessMaxOrderByAggregateInput = {
@@ -5073,6 +5100,7 @@ export namespace Prisma {
     theme?: SortOrder
     state?: SortOrder
     themeScript?: SortOrder
+    logo?: SortOrder
   }
 
   export type BusinessMinOrderByAggregateInput = {
@@ -5090,6 +5118,7 @@ export namespace Prisma {
     theme?: SortOrder
     state?: SortOrder
     themeScript?: SortOrder
+    logo?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5579,6 +5608,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: string | null
+    logo?: string | null
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
   }
 
@@ -5600,6 +5630,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: string | null
+    logo?: string | null
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
   }
 
@@ -5637,6 +5668,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
   }
 
@@ -5658,6 +5690,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
   }
 
@@ -5679,6 +5712,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: string | null
+    logo?: string | null
     locations?: LocationCreateNestedManyWithoutBusinessInput
   }
 
@@ -5700,6 +5734,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: string | null
+    logo?: string | null
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
   }
 
@@ -5737,6 +5772,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     locations?: LocationUpdateManyWithoutBusinessNestedInput
   }
 
@@ -5758,6 +5794,7 @@ export namespace Prisma {
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
   }
 

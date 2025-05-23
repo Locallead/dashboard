@@ -9,6 +9,7 @@ import SchemaForm from "@/app/components/schema-form";
 import { ServiceManager } from "@/app/components/service-menager";
 import ServicePageForm from "@/app/components/service-page-form";
 import ThemePicker from "@/app/components/theme-picker";
+import { UploadLogo } from "@/app/components/upload-logo";
 import { notFound } from "next/navigation";
 
 export default async function Page({
@@ -64,7 +65,11 @@ export default async function Page({
 
   return (
     <div className="space-y-20">
-      <ThemePicker id={id} initTheme={business.theme} />
+      <div className="flex gap-2">
+        <ThemePicker id={id} initTheme={business.theme} />
+        <UploadLogo businessId={id} currentLogo={business.logo || ""} />
+      </div>
+
       <BusinessEditForm business={validBusiness} />
       <CreateHomePage
         id={id}
