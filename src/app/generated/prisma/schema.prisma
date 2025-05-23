@@ -21,11 +21,11 @@ model Business {
   description   String
   html          String
   theme         String     @default("1")
-  themeScript   String?    @db.Text
   services      Json?      @default("[]")
   state         String
   locationPages Json?      @default("[]")
   servicePages  Json?      @default("[]")
+  themeScript   String?
   homePage      HomePage?
   locations     Location[]
 }

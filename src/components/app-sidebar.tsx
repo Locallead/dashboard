@@ -46,7 +46,7 @@ export function AppSidebar() {
     const result = await deleteBusiness(id);
     if (result.success) {
       toast.success("Business deleted successfully");
-      router.push("/"); 
+      router.push("/");
     } else {
       toast.error("Failed to delete business");
     }
@@ -80,7 +80,7 @@ export function AppSidebar() {
                     }`}
                     asChild
                   >
-                    <a href={item.url}>
+                    <a className="py-2" href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                       <Button

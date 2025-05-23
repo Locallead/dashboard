@@ -31,7 +31,7 @@ export type HomePage = $Result.DefaultSelection<Prisma.$HomePagePayload>
 
 /**
  * ##  Prisma Client ʲˢ
- * 
+ *
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
@@ -40,7 +40,7 @@ export type HomePage = $Result.DefaultSelection<Prisma.$HomePagePayload>
  * const businesses = await prisma.business.findMany()
  * ```
  *
- * 
+ *
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
@@ -52,7 +52,7 @@ export class PrismaClient<
 
     /**
    * ##  Prisma Client ʲˢ
-   * 
+   *
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
@@ -61,12 +61,12 @@ export class PrismaClient<
    * const businesses = await prisma.business.findMany()
    * ```
    *
-   * 
+   *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
 
   /**
    * Connect with the database
@@ -91,7 +91,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
-   * 
+   *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -103,7 +103,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
-   * 
+   *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -114,7 +114,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
-   * 
+   *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -126,7 +126,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
-   * 
+   *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -150,7 +150,9 @@ export class PrismaClient<
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
 
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
+    extArgs: ExtArgs
+  }>>
 
       /**
    * `prisma.business`: Exposes CRUD operations for the **Business** model.
@@ -160,7 +162,7 @@ export class PrismaClient<
     * const businesses = await prisma.business.findMany()
     * ```
     */
-  get business(): Prisma.BusinessDelegate<ExtArgs>;
+  get business(): Prisma.BusinessDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.location`: Exposes CRUD operations for the **Location** model.
@@ -170,7 +172,7 @@ export class PrismaClient<
     * const locations = await prisma.location.findMany()
     * ```
     */
-  get location(): Prisma.LocationDelegate<ExtArgs>;
+  get location(): Prisma.LocationDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.homePage`: Exposes CRUD operations for the **HomePage** model.
@@ -180,7 +182,7 @@ export class PrismaClient<
     * const homePages = await prisma.homePage.findMany()
     * ```
     */
-  get homePage(): Prisma.HomePageDelegate<ExtArgs>;
+  get homePage(): Prisma.HomePageDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -201,7 +203,6 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
-  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -222,7 +223,7 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-   * Metrics 
+   * Metrics
    */
   export type Metrics = runtime.Metrics
   export type Metric<T> = runtime.Metric<T>
@@ -240,14 +241,14 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.22.0
-   * Query Engine version: 69d742ee20b815d88e17e54db4a2a7a3b30324e3
+   * Prisma Client JS version: 6.8.2
+   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
    */
   export type PrismaVersion = {
     client: string
   }
 
-  export const prismaVersion: PrismaVersion 
+  export const prismaVersion: PrismaVersion
 
   /**
    * Utility Types
@@ -263,15 +264,15 @@ export namespace Prisma {
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
-   * 
+   *
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   namespace NullTypes {
     /**
     * Type of `Prisma.DbNull`.
-    * 
+    *
     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    * 
+    *
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class DbNull {
@@ -281,9 +282,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.JsonNull`.
-    * 
+    *
     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    * 
+    *
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class JsonNull {
@@ -293,9 +294,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.AnyNull`.
-    * 
+    *
     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    * 
+    *
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class AnyNull {
@@ -306,21 +307,21 @@ export namespace Prisma {
 
   /**
    * Helper for filtering JSON entries that have `null` on the database (empty on the db)
-   * 
+   *
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const DbNull: NullTypes.DbNull
 
   /**
    * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
-   * 
+   *
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const JsonNull: NullTypes.JsonNull
 
   /**
    * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
-   * 
+   *
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const AnyNull: NullTypes.AnyNull
@@ -508,7 +509,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? K : never]-?: O[P]} & O
+      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -634,11 +635,14 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
+    globalOmitOptions: {
+      omit: GlobalOmitOptions
+    }
     meta: {
       modelProps: "business" | "location" | "homePage"
       txIsolationLevel: Prisma.TransactionIsolationLevel
@@ -695,6 +699,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.BusinessUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BusinessUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BusinessPayload>[]
           }
           upsert: {
             args: Prisma.BusinessUpsertArgs<ExtArgs>
@@ -766,6 +774,10 @@ export namespace Prisma {
             args: Prisma.LocationUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.LocationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>[]
+          }
           upsert: {
             args: Prisma.LocationUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$LocationPayload>
@@ -835,6 +847,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.HomePageUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HomePageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HomePagePayload>[]
           }
           upsert: {
             args: Prisma.HomePageUpsertArgs<ExtArgs>
@@ -921,8 +937,27 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
+    /**
+     * Global configuration for omitting model fields by default.
+     * 
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   omit: {
+     *     user: {
+     *       password: true
+     *     }
+     *   }
+     * })
+     * ```
+     */
+    omit?: Prisma.GlobalOmitConfig
   }
-
+  export type GlobalOmitConfig = {
+    business?: BusinessOmit
+    location?: LocationOmit
+    homePage?: HomePageOmit
+  }
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -963,6 +998,7 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
+    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -1068,8 +1104,8 @@ export namespace Prisma {
     description: string | null
     html: string | null
     theme: string | null
-    themeScript: string | null
     state: string | null
+    themeScript: string | null
   }
 
   export type BusinessMaxAggregateOutputType = {
@@ -1085,8 +1121,8 @@ export namespace Prisma {
     description: string | null
     html: string | null
     theme: string | null
-    themeScript: string | null
     state: string | null
+    themeScript: string | null
   }
 
   export type BusinessCountAggregateOutputType = {
@@ -1102,11 +1138,11 @@ export namespace Prisma {
     description: number
     html: number
     theme: number
-    themeScript: number
     services: number
     state: number
     locationPages: number
     servicePages: number
+    themeScript: number
     _all: number
   }
 
@@ -1124,8 +1160,8 @@ export namespace Prisma {
     description?: true
     html?: true
     theme?: true
-    themeScript?: true
     state?: true
+    themeScript?: true
   }
 
   export type BusinessMaxAggregateInputType = {
@@ -1141,8 +1177,8 @@ export namespace Prisma {
     description?: true
     html?: true
     theme?: true
-    themeScript?: true
     state?: true
+    themeScript?: true
   }
 
   export type BusinessCountAggregateInputType = {
@@ -1158,11 +1194,11 @@ export namespace Prisma {
     description?: true
     html?: true
     theme?: true
-    themeScript?: true
     services?: true
     state?: true
     locationPages?: true
     servicePages?: true
+    themeScript?: true
     _all?: true
   }
 
@@ -1251,11 +1287,11 @@ export namespace Prisma {
     description: string
     html: string
     theme: string
-    themeScript: string | null
     services: JsonValue | null
     state: string
     locationPages: JsonValue | null
     servicePages: JsonValue | null
+    themeScript: string | null
     _count: BusinessCountAggregateOutputType | null
     _min: BusinessMinAggregateOutputType | null
     _max: BusinessMaxAggregateOutputType | null
@@ -1288,11 +1324,11 @@ export namespace Prisma {
     description?: boolean
     html?: boolean
     theme?: boolean
-    themeScript?: boolean
     services?: boolean
     state?: boolean
     locationPages?: boolean
     servicePages?: boolean
+    themeScript?: boolean
     homePage?: boolean | Business$homePageArgs<ExtArgs>
     locations?: boolean | Business$locationsArgs<ExtArgs>
     _count?: boolean | BusinessCountOutputTypeDefaultArgs<ExtArgs>
@@ -1311,11 +1347,31 @@ export namespace Prisma {
     description?: boolean
     html?: boolean
     theme?: boolean
-    themeScript?: boolean
     services?: boolean
     state?: boolean
     locationPages?: boolean
     servicePages?: boolean
+    themeScript?: boolean
+  }, ExtArgs["result"]["business"]>
+
+  export type BusinessSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    address?: boolean
+    phone?: boolean
+    city?: boolean
+    email?: boolean
+    hours?: boolean
+    mapLink?: boolean
+    facebook?: boolean
+    description?: boolean
+    html?: boolean
+    theme?: boolean
+    services?: boolean
+    state?: boolean
+    locationPages?: boolean
+    servicePages?: boolean
+    themeScript?: boolean
   }, ExtArgs["result"]["business"]>
 
   export type BusinessSelectScalar = {
@@ -1331,19 +1387,21 @@ export namespace Prisma {
     description?: boolean
     html?: boolean
     theme?: boolean
-    themeScript?: boolean
     services?: boolean
     state?: boolean
     locationPages?: boolean
     servicePages?: boolean
+    themeScript?: boolean
   }
 
+  export type BusinessOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "phone" | "city" | "email" | "hours" | "mapLink" | "facebook" | "description" | "html" | "theme" | "services" | "state" | "locationPages" | "servicePages" | "themeScript", ExtArgs["result"]["business"]>
   export type BusinessInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     homePage?: boolean | Business$homePageArgs<ExtArgs>
     locations?: boolean | Business$locationsArgs<ExtArgs>
     _count?: boolean | BusinessCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BusinessIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type BusinessIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $BusinessPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Business"
@@ -1364,23 +1422,23 @@ export namespace Prisma {
       description: string
       html: string
       theme: string
-      themeScript: string | null
       services: Prisma.JsonValue | null
       state: string
       locationPages: Prisma.JsonValue | null
       servicePages: Prisma.JsonValue | null
+      themeScript: string | null
     }, ExtArgs["result"]["business"]>
     composites: {}
   }
 
   type BusinessGetPayload<S extends boolean | null | undefined | BusinessDefaultArgs> = $Result.GetResult<Prisma.$BusinessPayload, S>
 
-  type BusinessCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<BusinessFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  type BusinessCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BusinessFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: BusinessCountAggregateInputType | true
     }
 
-  export interface BusinessDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+  export interface BusinessDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Business'], meta: { name: 'Business' } }
     /**
      * Find zero or one Business that matches the filter.
@@ -1393,10 +1451,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends BusinessFindUniqueArgs>(args: SelectSubset<T, BusinessFindUniqueArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends BusinessFindUniqueArgs>(args: SelectSubset<T, BusinessFindUniqueArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Business that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Business that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
      * @param {BusinessFindUniqueOrThrowArgs} args - Arguments to find a Business
      * @example
@@ -1407,7 +1465,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends BusinessFindUniqueOrThrowArgs>(args: SelectSubset<T, BusinessFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends BusinessFindUniqueOrThrowArgs>(args: SelectSubset<T, BusinessFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Business that matches the filter.
@@ -1422,7 +1480,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends BusinessFindFirstArgs>(args?: SelectSubset<T, BusinessFindFirstArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends BusinessFindFirstArgs>(args?: SelectSubset<T, BusinessFindFirstArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Business that matches the filter or
@@ -1438,7 +1496,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends BusinessFindFirstOrThrowArgs>(args?: SelectSubset<T, BusinessFindFirstOrThrowArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends BusinessFindFirstOrThrowArgs>(args?: SelectSubset<T, BusinessFindFirstOrThrowArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Businesses that matches the filter.
@@ -1456,7 +1514,7 @@ export namespace Prisma {
      * const businessWithIdOnly = await prisma.business.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends BusinessFindManyArgs>(args?: SelectSubset<T, BusinessFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findMany">>
+    findMany<T extends BusinessFindManyArgs>(args?: SelectSubset<T, BusinessFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Business.
@@ -1470,7 +1528,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends BusinessCreateArgs>(args: SelectSubset<T, BusinessCreateArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends BusinessCreateArgs>(args: SelectSubset<T, BusinessCreateArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Businesses.
@@ -1498,7 +1556,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Businesses and only return the `id`
-     * const businessWithIdOnly = await prisma.business.createManyAndReturn({ 
+     * const businessWithIdOnly = await prisma.business.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1508,7 +1566,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends BusinessCreateManyAndReturnArgs>(args?: SelectSubset<T, BusinessCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "createManyAndReturn">>
+    createManyAndReturn<T extends BusinessCreateManyAndReturnArgs>(args?: SelectSubset<T, BusinessCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a Business.
@@ -1522,7 +1580,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends BusinessDeleteArgs>(args: SelectSubset<T, BusinessDeleteArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends BusinessDeleteArgs>(args: SelectSubset<T, BusinessDeleteArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Business.
@@ -1539,7 +1597,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends BusinessUpdateArgs>(args: SelectSubset<T, BusinessUpdateArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends BusinessUpdateArgs>(args: SelectSubset<T, BusinessUpdateArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Businesses.
@@ -1575,6 +1633,36 @@ export namespace Prisma {
     updateMany<T extends BusinessUpdateManyArgs>(args: SelectSubset<T, BusinessUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Update zero or more Businesses and returns the data updated in the database.
+     * @param {BusinessUpdateManyAndReturnArgs} args - Arguments to update many Businesses.
+     * @example
+     * // Update many Businesses
+     * const business = await prisma.business.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Businesses and only return the `id`
+     * const businessWithIdOnly = await prisma.business.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BusinessUpdateManyAndReturnArgs>(args: SelectSubset<T, BusinessUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Create or update one Business.
      * @param {BusinessUpsertArgs} args - Arguments to update or create a Business.
      * @example
@@ -1591,7 +1679,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends BusinessUpsertArgs>(args: SelectSubset<T, BusinessUpsertArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends BusinessUpsertArgs>(args: SelectSubset<T, BusinessUpsertArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
@@ -1731,10 +1819,10 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__BusinessClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__BusinessClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    homePage<T extends Business$homePageArgs<ExtArgs> = {}>(args?: Subset<T, Business$homePageArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
-    locations<T extends Business$locationsArgs<ExtArgs> = {}>(args?: Subset<T, Business$locationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany"> | Null>
+    homePage<T extends Business$homePageArgs<ExtArgs> = {}>(args?: Subset<T, Business$homePageArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    locations<T extends Business$locationsArgs<ExtArgs> = {}>(args?: Subset<T, Business$locationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1762,7 +1850,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Business model
-   */ 
+   */
   interface BusinessFieldRefs {
     readonly id: FieldRef<"Business", 'String'>
     readonly name: FieldRef<"Business", 'String'>
@@ -1776,11 +1864,11 @@ export namespace Prisma {
     readonly description: FieldRef<"Business", 'String'>
     readonly html: FieldRef<"Business", 'String'>
     readonly theme: FieldRef<"Business", 'String'>
-    readonly themeScript: FieldRef<"Business", 'String'>
     readonly services: FieldRef<"Business", 'Json'>
     readonly state: FieldRef<"Business", 'String'>
     readonly locationPages: FieldRef<"Business", 'Json'>
     readonly servicePages: FieldRef<"Business", 'Json'>
+    readonly themeScript: FieldRef<"Business", 'String'>
   }
     
 
@@ -1793,6 +1881,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Business
      */
     select?: BusinessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -1812,6 +1904,10 @@ export namespace Prisma {
      */
     select?: BusinessSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: BusinessInclude<ExtArgs> | null
@@ -1829,6 +1925,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Business
      */
     select?: BusinessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -1878,6 +1978,10 @@ export namespace Prisma {
      */
     select?: BusinessSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: BusinessInclude<ExtArgs> | null
@@ -1926,6 +2030,10 @@ export namespace Prisma {
      */
     select?: BusinessSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: BusinessInclude<ExtArgs> | null
@@ -1969,6 +2077,10 @@ export namespace Prisma {
      */
     select?: BusinessSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: BusinessInclude<ExtArgs> | null
@@ -1998,6 +2110,10 @@ export namespace Prisma {
      */
     select?: BusinessSelectCreateManyAndReturn<ExtArgs> | null
     /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
+    /**
      * The data used to create many Businesses.
      */
     data: BusinessCreateManyInput | BusinessCreateManyInput[]
@@ -2012,6 +2128,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Business
      */
     select?: BusinessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2038,6 +2158,36 @@ export namespace Prisma {
      * Filter which Businesses to update
      */
     where?: BusinessWhereInput
+    /**
+     * Limit how many Businesses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Business updateManyAndReturn
+   */
+  export type BusinessUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Business
+     */
+    select?: BusinessSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
+    /**
+     * The data used to update Businesses.
+     */
+    data: XOR<BusinessUpdateManyMutationInput, BusinessUncheckedUpdateManyInput>
+    /**
+     * Filter which Businesses to update
+     */
+    where?: BusinessWhereInput
+    /**
+     * Limit how many Businesses to update.
+     */
+    limit?: number
   }
 
   /**
@@ -2048,6 +2198,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Business
      */
     select?: BusinessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2075,6 +2229,10 @@ export namespace Prisma {
      */
     select?: BusinessSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: BusinessInclude<ExtArgs> | null
@@ -2092,6 +2250,10 @@ export namespace Prisma {
      * Filter which Businesses to delete
      */
     where?: BusinessWhereInput
+    /**
+     * Limit how many Businesses to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -2102,6 +2264,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the HomePage
      */
     select?: HomePageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2117,6 +2283,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Location
      */
     select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2137,6 +2307,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Business
      */
     select?: BusinessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Business
+     */
+    omit?: BusinessOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2298,16 +2472,27 @@ export namespace Prisma {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["location"]>
 
+  export type LocationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessId?: boolean
+    locations?: boolean
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["location"]>
+
   export type LocationSelectScalar = {
     id?: boolean
     businessId?: boolean
     locations?: boolean
   }
 
+  export type LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "businessId" | "locations", ExtArgs["result"]["location"]>
   export type LocationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
   export type LocationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }
+  export type LocationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
 
@@ -2326,12 +2511,12 @@ export namespace Prisma {
 
   type LocationGetPayload<S extends boolean | null | undefined | LocationDefaultArgs> = $Result.GetResult<Prisma.$LocationPayload, S>
 
-  type LocationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<LocationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  type LocationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LocationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: LocationCountAggregateInputType | true
     }
 
-  export interface LocationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+  export interface LocationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Location'], meta: { name: 'Location' } }
     /**
      * Find zero or one Location that matches the filter.
@@ -2344,10 +2529,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends LocationFindUniqueArgs>(args: SelectSubset<T, LocationFindUniqueArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends LocationFindUniqueArgs>(args: SelectSubset<T, LocationFindUniqueArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Location that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Location that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
      * @param {LocationFindUniqueOrThrowArgs} args - Arguments to find a Location
      * @example
@@ -2358,7 +2543,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends LocationFindUniqueOrThrowArgs>(args: SelectSubset<T, LocationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends LocationFindUniqueOrThrowArgs>(args: SelectSubset<T, LocationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Location that matches the filter.
@@ -2373,7 +2558,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends LocationFindFirstArgs>(args?: SelectSubset<T, LocationFindFirstArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends LocationFindFirstArgs>(args?: SelectSubset<T, LocationFindFirstArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Location that matches the filter or
@@ -2389,7 +2574,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends LocationFindFirstOrThrowArgs>(args?: SelectSubset<T, LocationFindFirstOrThrowArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends LocationFindFirstOrThrowArgs>(args?: SelectSubset<T, LocationFindFirstOrThrowArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Locations that matches the filter.
@@ -2407,7 +2592,7 @@ export namespace Prisma {
      * const locationWithIdOnly = await prisma.location.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends LocationFindManyArgs>(args?: SelectSubset<T, LocationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany">>
+    findMany<T extends LocationFindManyArgs>(args?: SelectSubset<T, LocationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Location.
@@ -2421,7 +2606,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends LocationCreateArgs>(args: SelectSubset<T, LocationCreateArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends LocationCreateArgs>(args: SelectSubset<T, LocationCreateArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Locations.
@@ -2449,7 +2634,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Locations and only return the `id`
-     * const locationWithIdOnly = await prisma.location.createManyAndReturn({ 
+     * const locationWithIdOnly = await prisma.location.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2459,7 +2644,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends LocationCreateManyAndReturnArgs>(args?: SelectSubset<T, LocationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "createManyAndReturn">>
+    createManyAndReturn<T extends LocationCreateManyAndReturnArgs>(args?: SelectSubset<T, LocationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a Location.
@@ -2473,7 +2658,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends LocationDeleteArgs>(args: SelectSubset<T, LocationDeleteArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends LocationDeleteArgs>(args: SelectSubset<T, LocationDeleteArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Location.
@@ -2490,7 +2675,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends LocationUpdateArgs>(args: SelectSubset<T, LocationUpdateArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends LocationUpdateArgs>(args: SelectSubset<T, LocationUpdateArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Locations.
@@ -2526,6 +2711,36 @@ export namespace Prisma {
     updateMany<T extends LocationUpdateManyArgs>(args: SelectSubset<T, LocationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Update zero or more Locations and returns the data updated in the database.
+     * @param {LocationUpdateManyAndReturnArgs} args - Arguments to update many Locations.
+     * @example
+     * // Update many Locations
+     * const location = await prisma.location.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Locations and only return the `id`
+     * const locationWithIdOnly = await prisma.location.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LocationUpdateManyAndReturnArgs>(args: SelectSubset<T, LocationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Create or update one Location.
      * @param {LocationUpsertArgs} args - Arguments to update or create a Location.
      * @example
@@ -2542,7 +2757,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends LocationUpsertArgs>(args: SelectSubset<T, LocationUpsertArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends LocationUpsertArgs>(args: SelectSubset<T, LocationUpsertArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
@@ -2682,9 +2897,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__LocationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__LocationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    business<T extends BusinessDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusinessDefaultArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    business<T extends BusinessDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusinessDefaultArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2712,7 +2927,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Location model
-   */ 
+   */
   interface LocationFieldRefs {
     readonly id: FieldRef<"Location", 'String'>
     readonly businessId: FieldRef<"Location", 'String'>
@@ -2729,6 +2944,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Location
      */
     select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2748,6 +2967,10 @@ export namespace Prisma {
      */
     select?: LocationSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LocationInclude<ExtArgs> | null
@@ -2765,6 +2988,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Location
      */
     select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2814,6 +3041,10 @@ export namespace Prisma {
      */
     select?: LocationSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LocationInclude<ExtArgs> | null
@@ -2862,6 +3093,10 @@ export namespace Prisma {
      */
     select?: LocationSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LocationInclude<ExtArgs> | null
@@ -2905,6 +3140,10 @@ export namespace Prisma {
      */
     select?: LocationSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LocationInclude<ExtArgs> | null
@@ -2934,6 +3173,10 @@ export namespace Prisma {
      */
     select?: LocationSelectCreateManyAndReturn<ExtArgs> | null
     /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
      * The data used to create many Locations.
      */
     data: LocationCreateManyInput | LocationCreateManyInput[]
@@ -2952,6 +3195,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Location
      */
     select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -2978,6 +3225,40 @@ export namespace Prisma {
      * Filter which Locations to update
      */
     where?: LocationWhereInput
+    /**
+     * Limit how many Locations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Location updateManyAndReturn
+   */
+  export type LocationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * The data used to update Locations.
+     */
+    data: XOR<LocationUpdateManyMutationInput, LocationUncheckedUpdateManyInput>
+    /**
+     * Filter which Locations to update
+     */
+    where?: LocationWhereInput
+    /**
+     * Limit how many Locations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -2988,6 +3269,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Location
      */
     select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3015,6 +3300,10 @@ export namespace Prisma {
      */
     select?: LocationSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: LocationInclude<ExtArgs> | null
@@ -3032,6 +3321,10 @@ export namespace Prisma {
      * Filter which Locations to delete
      */
     where?: LocationWhereInput
+    /**
+     * Limit how many Locations to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -3042,6 +3335,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Location
      */
     select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3203,16 +3500,27 @@ export namespace Prisma {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["homePage"]>
 
+  export type HomePageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    businessId?: boolean
+    sections?: boolean
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["homePage"]>
+
   export type HomePageSelectScalar = {
     id?: boolean
     businessId?: boolean
     sections?: boolean
   }
 
+  export type HomePageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "businessId" | "sections", ExtArgs["result"]["homePage"]>
   export type HomePageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
   export type HomePageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    business?: boolean | BusinessDefaultArgs<ExtArgs>
+  }
+  export type HomePageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
 
@@ -3231,12 +3539,12 @@ export namespace Prisma {
 
   type HomePageGetPayload<S extends boolean | null | undefined | HomePageDefaultArgs> = $Result.GetResult<Prisma.$HomePagePayload, S>
 
-  type HomePageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<HomePageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+  type HomePageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HomePageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: HomePageCountAggregateInputType | true
     }
 
-  export interface HomePageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+  export interface HomePageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HomePage'], meta: { name: 'HomePage' } }
     /**
      * Find zero or one HomePage that matches the filter.
@@ -3249,10 +3557,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends HomePageFindUniqueArgs>(args: SelectSubset<T, HomePageFindUniqueArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends HomePageFindUniqueArgs>(args: SelectSubset<T, HomePageFindUniqueArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one HomePage that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one HomePage that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
      * @param {HomePageFindUniqueOrThrowArgs} args - Arguments to find a HomePage
      * @example
@@ -3263,7 +3571,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends HomePageFindUniqueOrThrowArgs>(args: SelectSubset<T, HomePageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends HomePageFindUniqueOrThrowArgs>(args: SelectSubset<T, HomePageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first HomePage that matches the filter.
@@ -3278,7 +3586,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends HomePageFindFirstArgs>(args?: SelectSubset<T, HomePageFindFirstArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends HomePageFindFirstArgs>(args?: SelectSubset<T, HomePageFindFirstArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first HomePage that matches the filter or
@@ -3294,7 +3602,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends HomePageFindFirstOrThrowArgs>(args?: SelectSubset<T, HomePageFindFirstOrThrowArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends HomePageFindFirstOrThrowArgs>(args?: SelectSubset<T, HomePageFindFirstOrThrowArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more HomePages that matches the filter.
@@ -3312,7 +3620,7 @@ export namespace Prisma {
      * const homePageWithIdOnly = await prisma.homePage.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends HomePageFindManyArgs>(args?: SelectSubset<T, HomePageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findMany">>
+    findMany<T extends HomePageFindManyArgs>(args?: SelectSubset<T, HomePageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a HomePage.
@@ -3326,7 +3634,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends HomePageCreateArgs>(args: SelectSubset<T, HomePageCreateArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends HomePageCreateArgs>(args: SelectSubset<T, HomePageCreateArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many HomePages.
@@ -3354,7 +3662,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many HomePages and only return the `id`
-     * const homePageWithIdOnly = await prisma.homePage.createManyAndReturn({ 
+     * const homePageWithIdOnly = await prisma.homePage.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3364,7 +3672,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends HomePageCreateManyAndReturnArgs>(args?: SelectSubset<T, HomePageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "createManyAndReturn">>
+    createManyAndReturn<T extends HomePageCreateManyAndReturnArgs>(args?: SelectSubset<T, HomePageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a HomePage.
@@ -3378,7 +3686,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends HomePageDeleteArgs>(args: SelectSubset<T, HomePageDeleteArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends HomePageDeleteArgs>(args: SelectSubset<T, HomePageDeleteArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one HomePage.
@@ -3395,7 +3703,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends HomePageUpdateArgs>(args: SelectSubset<T, HomePageUpdateArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends HomePageUpdateArgs>(args: SelectSubset<T, HomePageUpdateArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more HomePages.
@@ -3431,6 +3739,36 @@ export namespace Prisma {
     updateMany<T extends HomePageUpdateManyArgs>(args: SelectSubset<T, HomePageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Update zero or more HomePages and returns the data updated in the database.
+     * @param {HomePageUpdateManyAndReturnArgs} args - Arguments to update many HomePages.
+     * @example
+     * // Update many HomePages
+     * const homePage = await prisma.homePage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HomePages and only return the `id`
+     * const homePageWithIdOnly = await prisma.homePage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HomePageUpdateManyAndReturnArgs>(args: SelectSubset<T, HomePageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Create or update one HomePage.
      * @param {HomePageUpsertArgs} args - Arguments to update or create a HomePage.
      * @example
@@ -3447,7 +3785,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends HomePageUpsertArgs>(args: SelectSubset<T, HomePageUpsertArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends HomePageUpsertArgs>(args: SelectSubset<T, HomePageUpsertArgs<ExtArgs>>): Prisma__HomePageClient<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
@@ -3587,9 +3925,9 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__HomePageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__HomePageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    business<T extends BusinessDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusinessDefaultArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    business<T extends BusinessDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusinessDefaultArgs<ExtArgs>>): Prisma__BusinessClient<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3617,7 +3955,7 @@ export namespace Prisma {
 
   /**
    * Fields of the HomePage model
-   */ 
+   */
   interface HomePageFieldRefs {
     readonly id: FieldRef<"HomePage", 'String'>
     readonly businessId: FieldRef<"HomePage", 'String'>
@@ -3634,6 +3972,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the HomePage
      */
     select?: HomePageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3653,6 +3995,10 @@ export namespace Prisma {
      */
     select?: HomePageSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: HomePageInclude<ExtArgs> | null
@@ -3670,6 +4016,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the HomePage
      */
     select?: HomePageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3719,6 +4069,10 @@ export namespace Prisma {
      */
     select?: HomePageSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: HomePageInclude<ExtArgs> | null
@@ -3767,6 +4121,10 @@ export namespace Prisma {
      */
     select?: HomePageSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: HomePageInclude<ExtArgs> | null
@@ -3810,6 +4168,10 @@ export namespace Prisma {
      */
     select?: HomePageSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: HomePageInclude<ExtArgs> | null
@@ -3839,6 +4201,10 @@ export namespace Prisma {
      */
     select?: HomePageSelectCreateManyAndReturn<ExtArgs> | null
     /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
+    /**
      * The data used to create many HomePages.
      */
     data: HomePageCreateManyInput | HomePageCreateManyInput[]
@@ -3857,6 +4223,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the HomePage
      */
     select?: HomePageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3883,6 +4253,40 @@ export namespace Prisma {
      * Filter which HomePages to update
      */
     where?: HomePageWhereInput
+    /**
+     * Limit how many HomePages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HomePage updateManyAndReturn
+   */
+  export type HomePageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HomePage
+     */
+    select?: HomePageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
+    /**
+     * The data used to update HomePages.
+     */
+    data: XOR<HomePageUpdateManyMutationInput, HomePageUncheckedUpdateManyInput>
+    /**
+     * Filter which HomePages to update
+     */
+    where?: HomePageWhereInput
+    /**
+     * Limit how many HomePages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HomePageIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3893,6 +4297,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the HomePage
      */
     select?: HomePageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3920,6 +4328,10 @@ export namespace Prisma {
      */
     select?: HomePageSelect<ExtArgs> | null
     /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
+    /**
      * Choose, which related nodes to fetch as well
      */
     include?: HomePageInclude<ExtArgs> | null
@@ -3937,6 +4349,10 @@ export namespace Prisma {
      * Filter which HomePages to delete
      */
     where?: HomePageWhereInput
+    /**
+     * Limit how many HomePages to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -3947,6 +4363,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the HomePage
      */
     select?: HomePageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HomePage
+     */
+    omit?: HomePageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -3981,11 +4401,11 @@ export namespace Prisma {
     description: 'description',
     html: 'html',
     theme: 'theme',
-    themeScript: 'themeScript',
     services: 'services',
     state: 'state',
     locationPages: 'locationPages',
-    servicePages: 'servicePages'
+    servicePages: 'servicePages',
+    themeScript: 'themeScript'
   };
 
   export type BusinessScalarFieldEnum = (typeof BusinessScalarFieldEnum)[keyof typeof BusinessScalarFieldEnum]
@@ -4058,7 +4478,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references 
+   * Field references
    */
 
 
@@ -4080,6 +4500,13 @@ export namespace Prisma {
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -4116,12 +4543,12 @@ export namespace Prisma {
     description?: StringFilter<"Business"> | string
     html?: StringFilter<"Business"> | string
     theme?: StringFilter<"Business"> | string
-    themeScript?: StringNullableFilter<"Business"> | string | null
     services?: JsonNullableFilter<"Business">
     state?: StringFilter<"Business"> | string
     locationPages?: JsonNullableFilter<"Business">
     servicePages?: JsonNullableFilter<"Business">
-    homePage?: XOR<HomePageNullableRelationFilter, HomePageWhereInput> | null
+    themeScript?: StringNullableFilter<"Business"> | string | null
+    homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }
 
@@ -4138,11 +4565,11 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
-    themeScript?: SortOrderInput | SortOrder
     services?: SortOrderInput | SortOrder
     state?: SortOrder
     locationPages?: SortOrderInput | SortOrder
     servicePages?: SortOrderInput | SortOrder
+    themeScript?: SortOrderInput | SortOrder
     homePage?: HomePageOrderByWithRelationInput
     locations?: LocationOrderByRelationAggregateInput
   }
@@ -4163,12 +4590,12 @@ export namespace Prisma {
     description?: StringFilter<"Business"> | string
     html?: StringFilter<"Business"> | string
     theme?: StringFilter<"Business"> | string
-    themeScript?: StringNullableFilter<"Business"> | string | null
     services?: JsonNullableFilter<"Business">
     state?: StringFilter<"Business"> | string
     locationPages?: JsonNullableFilter<"Business">
     servicePages?: JsonNullableFilter<"Business">
-    homePage?: XOR<HomePageNullableRelationFilter, HomePageWhereInput> | null
+    themeScript?: StringNullableFilter<"Business"> | string | null
+    homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }, "id">
 
@@ -4185,11 +4612,11 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
-    themeScript?: SortOrderInput | SortOrder
     services?: SortOrderInput | SortOrder
     state?: SortOrder
     locationPages?: SortOrderInput | SortOrder
     servicePages?: SortOrderInput | SortOrder
+    themeScript?: SortOrderInput | SortOrder
     _count?: BusinessCountOrderByAggregateInput
     _max?: BusinessMaxOrderByAggregateInput
     _min?: BusinessMinOrderByAggregateInput
@@ -4211,11 +4638,11 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Business"> | string
     html?: StringWithAggregatesFilter<"Business"> | string
     theme?: StringWithAggregatesFilter<"Business"> | string
-    themeScript?: StringNullableWithAggregatesFilter<"Business"> | string | null
     services?: JsonNullableWithAggregatesFilter<"Business">
     state?: StringWithAggregatesFilter<"Business"> | string
     locationPages?: JsonNullableWithAggregatesFilter<"Business">
     servicePages?: JsonNullableWithAggregatesFilter<"Business">
+    themeScript?: StringNullableWithAggregatesFilter<"Business"> | string | null
   }
 
   export type LocationWhereInput = {
@@ -4225,7 +4652,7 @@ export namespace Prisma {
     id?: StringFilter<"Location"> | string
     businessId?: StringFilter<"Location"> | string
     locations?: JsonFilter<"Location">
-    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
   }
 
   export type LocationOrderByWithRelationInput = {
@@ -4242,7 +4669,7 @@ export namespace Prisma {
     NOT?: LocationWhereInput | LocationWhereInput[]
     businessId?: StringFilter<"Location"> | string
     locations?: JsonFilter<"Location">
-    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
   }, "id">
 
   export type LocationOrderByWithAggregationInput = {
@@ -4270,7 +4697,7 @@ export namespace Prisma {
     id?: StringFilter<"HomePage"> | string
     businessId?: StringFilter<"HomePage"> | string
     sections?: JsonFilter<"HomePage">
-    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
   }
 
   export type HomePageOrderByWithRelationInput = {
@@ -4287,7 +4714,7 @@ export namespace Prisma {
     OR?: HomePageWhereInput[]
     NOT?: HomePageWhereInput | HomePageWhereInput[]
     sections?: JsonFilter<"HomePage">
-    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
   }, "id" | "businessId">
 
   export type HomePageOrderByWithAggregationInput = {
@@ -4321,11 +4748,11 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
-    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: string | null
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
     locations?: LocationCreateNestedManyWithoutBusinessInput
   }
@@ -4343,11 +4770,11 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
-    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: string | null
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
   }
@@ -4365,11 +4792,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
     locations?: LocationUpdateManyWithoutBusinessNestedInput
   }
@@ -4387,11 +4814,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
   }
@@ -4409,11 +4836,11 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
-    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: string | null
   }
 
   export type BusinessUpdateManyMutationInput = {
@@ -4429,11 +4856,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BusinessUncheckedUpdateManyInput = {
@@ -4449,11 +4876,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type LocationCreateInput = {
@@ -4552,6 +4979,29 @@ export namespace Prisma {
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
@@ -4567,30 +5017,8 @@ export namespace Prisma {
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
-  export type JsonNullableFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type HomePageNullableRelationFilter = {
+  export type HomePageNullableScalarRelationFilter = {
     is?: HomePageWhereInput | null
     isNot?: HomePageWhereInput | null
   }
@@ -4623,11 +5051,11 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
-    themeScript?: SortOrder
     services?: SortOrder
     state?: SortOrder
     locationPages?: SortOrder
     servicePages?: SortOrder
+    themeScript?: SortOrder
   }
 
   export type BusinessMaxOrderByAggregateInput = {
@@ -4643,8 +5071,8 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
-    themeScript?: SortOrder
     state?: SortOrder
+    themeScript?: SortOrder
   }
 
   export type BusinessMinOrderByAggregateInput = {
@@ -4660,8 +5088,8 @@ export namespace Prisma {
     description?: SortOrder
     html?: SortOrder
     theme?: SortOrder
-    themeScript?: SortOrder
     state?: SortOrder
+    themeScript?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -4681,6 +5109,32 @@ export namespace Prisma {
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
   }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
@@ -4699,32 +5153,7 @@ export namespace Prisma {
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
-  }
-  export type JsonFilter<$PrismaModel = never> = 
+  export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
         Required<JsonFilterBase<$PrismaModel>>
@@ -4734,12 +5163,13 @@ export namespace Prisma {
   export type JsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -4747,7 +5177,7 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type BusinessRelationFilter = {
+  export type BusinessScalarRelationFilter = {
     is?: BusinessWhereInput
     isNot?: BusinessWhereInput
   }
@@ -4767,7 +5197,7 @@ export namespace Prisma {
     id?: SortOrder
     businessId?: SortOrder
   }
-  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
         Required<JsonWithAggregatesFilterBase<$PrismaModel>>
@@ -4777,12 +5207,13 @@ export namespace Prisma {
   export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -4975,6 +5406,40 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -4991,40 +5456,7 @@ export namespace Prisma {
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-  export type NestedJsonNullableFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-  export type NestedJsonFilter<$PrismaModel = never> = 
+  export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
         Required<NestedJsonFilterBase<$PrismaModel>>
@@ -5034,12 +5466,13 @@ export namespace Prisma {
   export type NestedJsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -5141,11 +5574,11 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
-    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: string | null
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
   }
 
@@ -5162,11 +5595,11 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
-    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: string | null
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
   }
 
@@ -5199,11 +5632,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
   }
 
@@ -5220,11 +5653,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
   }
 
@@ -5241,11 +5674,11 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
-    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: string | null
     locations?: LocationCreateNestedManyWithoutBusinessInput
   }
 
@@ -5262,11 +5695,11 @@ export namespace Prisma {
     description: string
     html: string
     theme?: string
-    themeScript?: string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state: string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: string | null
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
   }
 
@@ -5299,11 +5732,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     locations?: LocationUpdateManyWithoutBusinessNestedInput
   }
 
@@ -5320,11 +5753,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     html?: StringFieldUpdateOperationsInput | string
     theme?: StringFieldUpdateOperationsInput | string
-    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     services?: NullableJsonNullValueInput | InputJsonValue
     state?: StringFieldUpdateOperationsInput | string
     locationPages?: NullableJsonNullValueInput | InputJsonValue
     servicePages?: NullableJsonNullValueInput | InputJsonValue
+    themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
   }
 
@@ -5349,26 +5782,6 @@ export namespace Prisma {
   }
 
 
-
-  /**
-   * Aliases for legacy arg types
-   */
-    /**
-     * @deprecated Use BusinessCountOutputTypeDefaultArgs instead
-     */
-    export type BusinessCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BusinessCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use BusinessDefaultArgs instead
-     */
-    export type BusinessArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BusinessDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use LocationDefaultArgs instead
-     */
-    export type LocationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LocationDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use HomePageDefaultArgs instead
-     */
-    export type HomePageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = HomePageDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
