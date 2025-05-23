@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,7 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Loader2 } from "lucide-react";
 import { createHomePage, getHomePage } from "../actions";
 import { toast } from "sonner";
 import { useDeepCompareEffect } from "react-use";
@@ -73,7 +73,20 @@ type FormValues = {
   };
 };
 
-export default function CreateHomePage({ id }: { id: string }) {
+export default function CreateHomePage({
+  id,
+  businessName,
+  address,
+  state,
+  city,
+}: {
+  id: string;
+  businessName: string;
+  address: string;
+  state: string;
+  city: string;
+}) {
+  const [isGenerating, setIsGenerating] = useState(false);
   const {
     control,
     handleSubmit,
@@ -141,9 +154,108 @@ export default function CreateHomePage({ id }: { id: string }) {
     }
   };
 
+  const generateHomePageContent = async () => {
+    setIsGenerating(true);
+    try {
+      const response = await fetch("/api/home-page", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          business: businessName,
+          address,
+          state,
+          city,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to generate home page content");
+      }
+
+      const data = await response.json();
+
+      const sanitizedData = {
+        hero: {
+          title: data.hero?.title || "",
+          description: data.hero?.description || "",
+        },
+        usp: {
+          title1: data.usp?.title1 || "",
+          title2: data.usp?.title2 || "",
+          title3: data.usp?.title3 || "",
+          description1: data.usp?.description1 || "",
+          description2: data.usp?.description2 || "",
+          description3: data.usp?.description3 || "",
+        },
+        leftPicture: {
+          title: data.leftPicture?.title || "",
+          header: data.leftPicture?.header || "",
+          subHeader: data.leftPicture?.subHeader || "",
+          description: data.leftPicture?.description || "",
+        },
+        service: {
+          title: data.service?.title || "",
+          description: data.service?.description || "",
+          header: data.service?.header || "",
+        },
+        trust: {
+          title: data.trust?.title || "",
+          heading: data.trust?.heading || "",
+          quality1: data.trust?.quality1 || "",
+          quality2: data.trust?.quality2 || "",
+          quality3: data.trust?.quality3 || "",
+          quality4: data.trust?.quality4 || "",
+          quality5: data.trust?.quality5 || "",
+          quality6: data.trust?.quality6 || "",
+          description1: data.trust?.description1 || "",
+          description2: data.trust?.description2 || "",
+          description3: data.trust?.description3 || "",
+          description4: data.trust?.description4 || "",
+          description5: data.trust?.description5 || "",
+          description6: data.trust?.description6 || "",
+        },
+        map: {
+          title: data.map?.title || "",
+          description: data.map?.description || "",
+          heading: data.map?.heading || "",
+        },
+        cta: {
+          title: data.cta?.title || "",
+          link: data.cta?.link || "",
+        },
+        meta: {
+          title: data.meta?.title || "",
+          description: data.meta?.description || "",
+        },
+      };
+
+      reset(sanitizedData);
+      toast.success("Home page content generated successfully");
+    } catch (error) {
+      console.error("Error generating home page content:", error);
+      toast.error("Failed to generate home page content");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   return (
     <div className="w-full">
-      <h1 className="text-3xl font-bold mb-6 text-center">Create Home Page</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Create Home Page</h1>
+        <Button onClick={generateHomePageContent} disabled={isGenerating}>
+          {isGenerating ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Generating...
+            </>
+          ) : (
+            "Generate Home Page Content"
+          )}
+        </Button>
+      </div>
       <Card className="py-6">
         <CardHeader>
           <CardTitle className="text-2xl">Home Page Builder</CardTitle>

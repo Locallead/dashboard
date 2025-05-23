@@ -66,7 +66,13 @@ export default async function Page({
     <div className="space-y-20">
       <ThemePicker id={id} initTheme={business.theme} />
       <BusinessEditForm business={validBusiness} />
-      <CreateHomePage id={id} />
+      <CreateHomePage
+        id={id}
+        businessName={validBusiness.name}
+        address={validBusiness.address}
+        state={validBusiness.state}
+        city={validBusiness.city}
+      />
       <SchemaForm id={id} />
       <ServiceManager
         id={id}

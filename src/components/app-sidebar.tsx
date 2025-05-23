@@ -75,12 +75,12 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
-                    className={`${
+                    className={`py-2 ${
                       pathname === item.url ? "bg-primary/10" : ""
                     }`}
                     asChild
                   >
-                    <a className="py-2" href={item.url}>
+                    <a className="py-2 h-15" href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                       <Button
