@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 import { updateBusinessTheme } from "@/app/actions";
+import { Loader2 } from "lucide-react";
 
 export default function ThemePicker({
   id,
@@ -14,18 +15,21 @@ export default function ThemePicker({
   initTheme?: string;
 }) {
   const [theme, setTheme] = useState(initTheme?.toString() || "1");
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleThemeChange = (theme: string) => {
     setTheme(theme);
   };
 
   const handleSave = async () => {
+    setIsSaving(true);
     const { success } = await updateBusinessTheme(id, theme);
     if (success) {
       toast.success("Theme saved");
     } else {
       toast.error("Failed to save theme");
     }
+    setIsSaving(false);
   };
 
   return (
@@ -57,8 +61,12 @@ export default function ThemePicker({
           onClick={() => handleThemeChange("2")}
         />
       </div>
-      <Button onClick={handleSave} className="w-fit">
-        Save
+      <Button
+        onClick={handleSave}
+        className="w-fit cursor-pointer"
+        disabled={isSaving}
+      >
+        {isSaving ? <Loader2 className="animate-spin" /> : "Save"}
       </Button>
     </div>
   );

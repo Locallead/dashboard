@@ -1,16 +1,4 @@
-/*
-  Warnings:
 
-  - You are about to drop the `CTA` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `HeroSection` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `MapSection` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `PictureLeft` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `ServiceSection` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Testimonial` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `TrustSection` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `USP` table. If the table is not empty, all the data it contains will be lost.
-
-*/
 -- DropForeignKey
 ALTER TABLE "CTA" DROP CONSTRAINT "CTA_homePageId_fkey";
 
