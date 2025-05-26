@@ -26,6 +26,8 @@ model Business {
   locationPages Json?      @default("[]")
   servicePages  Json?      @default("[]")
   themeScript   String?
+  logo          String?    @default("/logo.svg")
+  faqs          Json?      @default("[]")
   homePage      HomePage?
   locations     Location[]
 }

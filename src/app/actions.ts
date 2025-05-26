@@ -247,3 +247,30 @@ export async function updateBusinessLogo(businessId: string, logoUrl: string) {
     };
   }
 }
+
+export async function createFaqs({
+  id,
+  data,
+}: {
+  id: string;
+  data: {
+    id: string;
+    question: string;
+    answer: string;
+    slug: string;
+  }[];
+}) {
+  try {
+    const business = await prisma.business.update({
+      where: { id },
+      data: {
+        faqs: data,
+      },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error saving FAQs:", error);
+    return { success: false, error: "Failed to save FAQs" };
+  }
+}

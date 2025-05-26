@@ -1,6 +1,7 @@
 import { getBusiness, getLocations } from "@/app/actions";
 import BusinessEditForm from "@/app/components/business-form-update";
 import CreateHomePage from "@/app/components/create-home-page";
+import { FaqGenerator } from "@/app/components/faq-generator";
 import { LocationManager } from "@/app/components/location-menager";
 import LocationPageForm, {
   FormValues,
@@ -35,6 +36,15 @@ export default async function Page({
     notFound();
   }
 
+  const faqs = Array.isArray(business.faqs)
+    ? business.faqs.map((faq: any) => ({
+        id: faq.id || String(Date.now()),
+        question: faq.question || "",
+        answer: faq.answer || "",
+        slug: faq.slug || "",
+      }))
+    : [];
+
   const validBusiness = {
     id: business.id,
     name: business.name,
@@ -50,6 +60,7 @@ export default async function Page({
     html: business.html,
     locationPages: business.locationPages,
     servicePages: business.servicePages,
+    faqs,
   };
 
   const services = Array.isArray(business.services)
@@ -140,6 +151,12 @@ export default async function Page({
         state={validBusiness.state}
         city={validBusiness.city}
         initialValues={(validBusiness.servicePages as FormValues) || {}}
+      />
+      <FaqGenerator
+        id={id}
+        initFaqs={validBusiness.faqs}
+        businessName={validBusiness.name}
+        cityName={validBusiness.city}
       />
     </div>
   );
