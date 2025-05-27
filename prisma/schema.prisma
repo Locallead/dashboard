@@ -28,6 +28,7 @@ model Business {
   themeScript   String?
   logo          String?    @default("/logo.svg")
   faqs          Json?      @default("[]")
+  faqSchema     String?    @default("[]")
   homePage      HomePage?
   locations     Location[]
 }

@@ -12,6 +12,7 @@ import ServicePageForm from "@/app/components/service-page-form";
 import ThemePicker from "@/app/components/theme-picker";
 import { UploadLogo } from "@/app/components/upload-logo";
 import { notFound } from "next/navigation";
+import FaqSchema from "@/app/components/faq-schema";
 
 export default async function Page({
   params,
@@ -61,6 +62,7 @@ export default async function Page({
     locationPages: business.locationPages,
     servicePages: business.servicePages,
     faqs,
+    faqSchema: business.faqSchema || "[]",
   };
 
   const services = Array.isArray(business.services)
@@ -157,6 +159,11 @@ export default async function Page({
         initFaqs={validBusiness.faqs}
         businessName={validBusiness.name}
         cityName={validBusiness.city}
+      />
+      <FaqSchema
+        id={id}
+        initialFaqs={validBusiness.faqs}
+        initialSchema={validBusiness.faqSchema}
       />
     </div>
   );

@@ -1107,6 +1107,7 @@ export namespace Prisma {
     state: string | null
     themeScript: string | null
     logo: string | null
+    faqSchema: string | null
   }
 
   export type BusinessMaxAggregateOutputType = {
@@ -1125,6 +1126,7 @@ export namespace Prisma {
     state: string | null
     themeScript: string | null
     logo: string | null
+    faqSchema: string | null
   }
 
   export type BusinessCountAggregateOutputType = {
@@ -1147,6 +1149,7 @@ export namespace Prisma {
     themeScript: number
     logo: number
     faqs: number
+    faqSchema: number
     _all: number
   }
 
@@ -1167,6 +1170,7 @@ export namespace Prisma {
     state?: true
     themeScript?: true
     logo?: true
+    faqSchema?: true
   }
 
   export type BusinessMaxAggregateInputType = {
@@ -1185,6 +1189,7 @@ export namespace Prisma {
     state?: true
     themeScript?: true
     logo?: true
+    faqSchema?: true
   }
 
   export type BusinessCountAggregateInputType = {
@@ -1207,6 +1212,7 @@ export namespace Prisma {
     themeScript?: true
     logo?: true
     faqs?: true
+    faqSchema?: true
     _all?: true
   }
 
@@ -1302,6 +1308,7 @@ export namespace Prisma {
     themeScript: string | null
     logo: string | null
     faqs: JsonValue | null
+    faqSchema: string | null
     _count: BusinessCountAggregateOutputType | null
     _min: BusinessMinAggregateOutputType | null
     _max: BusinessMaxAggregateOutputType | null
@@ -1341,6 +1348,7 @@ export namespace Prisma {
     themeScript?: boolean
     logo?: boolean
     faqs?: boolean
+    faqSchema?: boolean
     homePage?: boolean | Business$homePageArgs<ExtArgs>
     locations?: boolean | Business$locationsArgs<ExtArgs>
     _count?: boolean | BusinessCountOutputTypeDefaultArgs<ExtArgs>
@@ -1366,6 +1374,7 @@ export namespace Prisma {
     themeScript?: boolean
     logo?: boolean
     faqs?: boolean
+    faqSchema?: boolean
   }, ExtArgs["result"]["business"]>
 
   export type BusinessSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1388,6 +1397,7 @@ export namespace Prisma {
     themeScript?: boolean
     logo?: boolean
     faqs?: boolean
+    faqSchema?: boolean
   }, ExtArgs["result"]["business"]>
 
   export type BusinessSelectScalar = {
@@ -1410,9 +1420,10 @@ export namespace Prisma {
     themeScript?: boolean
     logo?: boolean
     faqs?: boolean
+    faqSchema?: boolean
   }
 
-  export type BusinessOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "phone" | "city" | "email" | "hours" | "mapLink" | "facebook" | "description" | "html" | "theme" | "services" | "state" | "locationPages" | "servicePages" | "themeScript" | "logo" | "faqs", ExtArgs["result"]["business"]>
+  export type BusinessOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "phone" | "city" | "email" | "hours" | "mapLink" | "facebook" | "description" | "html" | "theme" | "services" | "state" | "locationPages" | "servicePages" | "themeScript" | "logo" | "faqs" | "faqSchema", ExtArgs["result"]["business"]>
   export type BusinessInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     homePage?: boolean | Business$homePageArgs<ExtArgs>
     locations?: boolean | Business$locationsArgs<ExtArgs>
@@ -1447,6 +1458,7 @@ export namespace Prisma {
       themeScript: string | null
       logo: string | null
       faqs: Prisma.JsonValue | null
+      faqSchema: string | null
     }, ExtArgs["result"]["business"]>
     composites: {}
   }
@@ -1891,6 +1903,7 @@ export namespace Prisma {
     readonly themeScript: FieldRef<"Business", 'String'>
     readonly logo: FieldRef<"Business", 'String'>
     readonly faqs: FieldRef<"Business", 'Json'>
+    readonly faqSchema: FieldRef<"Business", 'String'>
   }
     
 
@@ -4429,7 +4442,8 @@ export namespace Prisma {
     servicePages: 'servicePages',
     themeScript: 'themeScript',
     logo: 'logo',
-    faqs: 'faqs'
+    faqs: 'faqs',
+    faqSchema: 'faqSchema'
   };
 
   export type BusinessScalarFieldEnum = (typeof BusinessScalarFieldEnum)[keyof typeof BusinessScalarFieldEnum]
@@ -4574,6 +4588,7 @@ export namespace Prisma {
     themeScript?: StringNullableFilter<"Business"> | string | null
     logo?: StringNullableFilter<"Business"> | string | null
     faqs?: JsonNullableFilter<"Business">
+    faqSchema?: StringNullableFilter<"Business"> | string | null
     homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }
@@ -4598,6 +4613,7 @@ export namespace Prisma {
     themeScript?: SortOrderInput | SortOrder
     logo?: SortOrderInput | SortOrder
     faqs?: SortOrderInput | SortOrder
+    faqSchema?: SortOrderInput | SortOrder
     homePage?: HomePageOrderByWithRelationInput
     locations?: LocationOrderByRelationAggregateInput
   }
@@ -4625,6 +4641,7 @@ export namespace Prisma {
     themeScript?: StringNullableFilter<"Business"> | string | null
     logo?: StringNullableFilter<"Business"> | string | null
     faqs?: JsonNullableFilter<"Business">
+    faqSchema?: StringNullableFilter<"Business"> | string | null
     homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }, "id">
@@ -4649,6 +4666,7 @@ export namespace Prisma {
     themeScript?: SortOrderInput | SortOrder
     logo?: SortOrderInput | SortOrder
     faqs?: SortOrderInput | SortOrder
+    faqSchema?: SortOrderInput | SortOrder
     _count?: BusinessCountOrderByAggregateInput
     _max?: BusinessMaxOrderByAggregateInput
     _min?: BusinessMinOrderByAggregateInput
@@ -4677,6 +4695,7 @@ export namespace Prisma {
     themeScript?: StringNullableWithAggregatesFilter<"Business"> | string | null
     logo?: StringNullableWithAggregatesFilter<"Business"> | string | null
     faqs?: JsonNullableWithAggregatesFilter<"Business">
+    faqSchema?: StringNullableWithAggregatesFilter<"Business"> | string | null
   }
 
   export type LocationWhereInput = {
@@ -4789,6 +4808,7 @@ export namespace Prisma {
     themeScript?: string | null
     logo?: string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: string | null
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
     locations?: LocationCreateNestedManyWithoutBusinessInput
   }
@@ -4813,6 +4833,7 @@ export namespace Prisma {
     themeScript?: string | null
     logo?: string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: string | null
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
   }
@@ -4837,6 +4858,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
     locations?: LocationUpdateManyWithoutBusinessNestedInput
   }
@@ -4861,6 +4883,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
   }
@@ -4885,6 +4908,7 @@ export namespace Prisma {
     themeScript?: string | null
     logo?: string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: string | null
   }
 
   export type BusinessUpdateManyMutationInput = {
@@ -4907,6 +4931,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BusinessUncheckedUpdateManyInput = {
@@ -4929,6 +4954,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type LocationCreateInput = {
@@ -5106,6 +5132,7 @@ export namespace Prisma {
     themeScript?: SortOrder
     logo?: SortOrder
     faqs?: SortOrder
+    faqSchema?: SortOrder
   }
 
   export type BusinessMaxOrderByAggregateInput = {
@@ -5124,6 +5151,7 @@ export namespace Prisma {
     state?: SortOrder
     themeScript?: SortOrder
     logo?: SortOrder
+    faqSchema?: SortOrder
   }
 
   export type BusinessMinOrderByAggregateInput = {
@@ -5142,6 +5170,7 @@ export namespace Prisma {
     state?: SortOrder
     themeScript?: SortOrder
     logo?: SortOrder
+    faqSchema?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5633,6 +5662,7 @@ export namespace Prisma {
     themeScript?: string | null
     logo?: string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: string | null
     homePage?: HomePageCreateNestedOneWithoutBusinessInput
   }
 
@@ -5656,6 +5686,7 @@ export namespace Prisma {
     themeScript?: string | null
     logo?: string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: string | null
     homePage?: HomePageUncheckedCreateNestedOneWithoutBusinessInput
   }
 
@@ -5695,6 +5726,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUpdateOneWithoutBusinessNestedInput
   }
 
@@ -5718,6 +5750,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
     homePage?: HomePageUncheckedUpdateOneWithoutBusinessNestedInput
   }
 
@@ -5741,6 +5774,7 @@ export namespace Prisma {
     themeScript?: string | null
     logo?: string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: string | null
     locations?: LocationCreateNestedManyWithoutBusinessInput
   }
 
@@ -5764,6 +5798,7 @@ export namespace Prisma {
     themeScript?: string | null
     logo?: string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: string | null
     locations?: LocationUncheckedCreateNestedManyWithoutBusinessInput
   }
 
@@ -5803,6 +5838,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
     locations?: LocationUpdateManyWithoutBusinessNestedInput
   }
 
@@ -5826,6 +5862,7 @@ export namespace Prisma {
     themeScript?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     faqs?: NullableJsonNullValueInput | InputJsonValue
+    faqSchema?: NullableStringFieldUpdateOperationsInput | string | null
     locations?: LocationUncheckedUpdateManyWithoutBusinessNestedInput
   }
 

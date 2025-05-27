@@ -274,3 +274,25 @@ export async function createFaqs({
     return { success: false, error: "Failed to save FAQs" };
   }
 }
+
+export async function saveFaqSchema({
+  id,
+  schema,
+}: {
+  id: string;
+  schema: string;
+}) {
+  try {
+    const business = await prisma.business.update({
+      where: { id },
+      data: {
+        faqSchema: schema,
+      },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error saving FAQ schema:", error);
+    return { success: false, error: "Failed to save FAQ schema" };
+  }
+}
