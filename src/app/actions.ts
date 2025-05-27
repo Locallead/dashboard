@@ -185,10 +185,14 @@ export async function addServicePage({ id, data }: { id: string; data: any }) {
 export async function deleteBusiness(id: string) {
   try {
     await prisma.business.delete({
-      where: { id },
+      where: {
+        id,
+      },
     });
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
+    console.error("Failed to delete business:", error);
     return { success: false, error: "Failed to delete business" };
   }
 }

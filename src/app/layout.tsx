@@ -5,6 +5,7 @@ import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "sonner";
+import { SidebarWrapper } from "@/components/sidebar-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,27 +24,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Toaster />
         <SidebarProvider>
           <div className="flex min-h-screen w-full overflow-hidden">
-            <AppSidebar />
+            <SidebarWrapper />
             <div className="flex-1 flex flex-col w-full">
               <header className="h-14 border-b px-4 flex items-center">
-                <SidebarTrigger />
-                <h1 className="ml-4 text-lg font-medium">Dashboard</h1>
+                <h1 className="text-lg font-medium">Site Builder</h1>
               </header>
-              <main className="flex-1 p-6 w-full">{children}</main>
+              {children}
             </div>
           </div>
         </SidebarProvider>
-        <Toaster position="top-right" />
       </body>
     </html>
   );

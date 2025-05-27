@@ -11,46 +11,24 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { getBusinesses, deleteBusiness } from "@/app/actions";
-import { useEffect, useState } from "react";
+import { deleteBusiness } from "@/app/actions";
 import { Business } from "@/app/generated/prisma";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Trash } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { SidebarItem } from "./sidebar-menu-item";
 
-export function AppSidebar() {
-  const [businesses, setBusinesses] = useState<Business[]>([]);
-  const pathname = usePathname();
-  const router = useRouter();
-  useEffect(() => {
-    const fetchBusinesses = async () => {
-      const businesses = await getBusinesses();
-      setBusinesses(businesses);
-    };
-    fetchBusinesses();
-  }, []);
+interface AppSidebarProps {
+  businesses: Business[];
+}
 
+export function AppSidebar({ businesses }: AppSidebarProps) {
   const items = businesses.map((business) => ({
     title: business.name,
     url: `/business/${business.id}`,
     icon: Home,
     id: business.id,
   }));
-
-  const handleDelete = async (id: string) => {
-    const result = await deleteBusiness(id);
-    if (result.success) {
-      toast.success("Business deleted successfully");
-      router.push("/");
-    } else {
-      toast.error("Failed to delete business");
-    }
-  };
 
   return (
     <Sidebar>
@@ -73,26 +51,14 @@ export function AppSidebar() {
                 </SidebarMenuItem>
               )}
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className={`py-2 ${
-                      pathname === item.url ? "bg-primary/10" : ""
-                    }`}
-                    asChild
-                  >
-                    <a className="py-2 h-15" href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                      <Button
-                        onClick={() => handleDelete(item.id)}
-                        variant="ghost"
-                        size="icon"
-                      >
-                        <Trash className="w-4 h-4" />
-                      </Button>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                <SidebarItem
+                  key={item.title}
+                  title={item.title}
+                  url={item.url}
+                  icon={item.icon}
+                  id={item.id}
+                  onDelete={deleteBusiness}
+                />
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
