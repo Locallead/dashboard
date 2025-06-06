@@ -72,8 +72,6 @@ export async function updateBusiness(data: {
       data,
     });
 
-    console.log("Updating business with ID:", data.id);
-
     return {
       success: true,
     };
