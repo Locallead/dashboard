@@ -242,7 +242,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Query Engine version: 69d742ee20b815d88e17e54db4a2a7a3b30324e3
    */
   export type PrismaVersion = {
     client: string
@@ -700,10 +700,6 @@ export namespace Prisma {
             args: Prisma.BusinessUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.BusinessUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BusinessPayload>[]
-          }
           upsert: {
             args: Prisma.BusinessUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$BusinessPayload>
@@ -774,10 +770,6 @@ export namespace Prisma {
             args: Prisma.LocationUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          updateManyAndReturn: {
-            args: Prisma.LocationUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$LocationPayload>[]
-          }
           upsert: {
             args: Prisma.LocationUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$LocationPayload>
@@ -847,10 +839,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.HomePageUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.HomePageUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$HomePagePayload>[]
           }
           upsert: {
             args: Prisma.HomePageUpsertArgs<ExtArgs>
@@ -1377,28 +1365,6 @@ export namespace Prisma {
     faqSchema?: boolean
   }, ExtArgs["result"]["business"]>
 
-  export type BusinessSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    address?: boolean
-    phone?: boolean
-    city?: boolean
-    email?: boolean
-    hours?: boolean
-    mapLink?: boolean
-    facebook?: boolean
-    description?: boolean
-    html?: boolean
-    theme?: boolean
-    services?: boolean
-    state?: boolean
-    locationPages?: boolean
-    servicePages?: boolean
-    themeScript?: boolean
-    logo?: boolean
-    faqs?: boolean
-    faqSchema?: boolean
-  }, ExtArgs["result"]["business"]>
 
   export type BusinessSelectScalar = {
     id?: boolean
@@ -1430,7 +1396,6 @@ export namespace Prisma {
     _count?: boolean | BusinessCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BusinessIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type BusinessIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $BusinessPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Business"
@@ -1663,36 +1628,6 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends BusinessUpdateManyArgs>(args: SelectSubset<T, BusinessUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Businesses and returns the data updated in the database.
-     * @param {BusinessUpdateManyAndReturnArgs} args - Arguments to update many Businesses.
-     * @example
-     * // Update many Businesses
-     * const business = await prisma.business.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Businesses and only return the `id`
-     * const businessWithIdOnly = await prisma.business.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BusinessUpdateManyAndReturnArgs>(args: SelectSubset<T, BusinessUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusinessPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Business.
@@ -2193,36 +2128,6 @@ export namespace Prisma {
      * Filter which Businesses to update
      */
     where?: BusinessWhereInput
-    /**
-     * Limit how many Businesses to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Business updateManyAndReturn
-   */
-  export type BusinessUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Business
-     */
-    select?: BusinessSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Business
-     */
-    omit?: BusinessOmit<ExtArgs> | null
-    /**
-     * The data used to update Businesses.
-     */
-    data: XOR<BusinessUpdateManyMutationInput, BusinessUncheckedUpdateManyInput>
-    /**
-     * Filter which Businesses to update
-     */
-    where?: BusinessWhereInput
-    /**
-     * Limit how many Businesses to update.
-     */
-    limit?: number
   }
 
   /**
@@ -2285,10 +2190,6 @@ export namespace Prisma {
      * Filter which Businesses to delete
      */
     where?: BusinessWhereInput
-    /**
-     * Limit how many Businesses to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -2507,12 +2408,6 @@ export namespace Prisma {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["location"]>
 
-  export type LocationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    businessId?: boolean
-    locations?: boolean
-    business?: boolean | BusinessDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["location"]>
 
   export type LocationSelectScalar = {
     id?: boolean
@@ -2525,9 +2420,6 @@ export namespace Prisma {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
   export type LocationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    business?: boolean | BusinessDefaultArgs<ExtArgs>
-  }
-  export type LocationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
 
@@ -2744,36 +2636,6 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends LocationUpdateManyArgs>(args: SelectSubset<T, LocationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Locations and returns the data updated in the database.
-     * @param {LocationUpdateManyAndReturnArgs} args - Arguments to update many Locations.
-     * @example
-     * // Update many Locations
-     * const location = await prisma.location.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Locations and only return the `id`
-     * const locationWithIdOnly = await prisma.location.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends LocationUpdateManyAndReturnArgs>(args: SelectSubset<T, LocationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Location.
@@ -3260,40 +3122,6 @@ export namespace Prisma {
      * Filter which Locations to update
      */
     where?: LocationWhereInput
-    /**
-     * Limit how many Locations to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Location updateManyAndReturn
-   */
-  export type LocationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Location
-     */
-    select?: LocationSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Location
-     */
-    omit?: LocationOmit<ExtArgs> | null
-    /**
-     * The data used to update Locations.
-     */
-    data: XOR<LocationUpdateManyMutationInput, LocationUncheckedUpdateManyInput>
-    /**
-     * Filter which Locations to update
-     */
-    where?: LocationWhereInput
-    /**
-     * Limit how many Locations to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: LocationIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3356,10 +3184,6 @@ export namespace Prisma {
      * Filter which Locations to delete
      */
     where?: LocationWhereInput
-    /**
-     * Limit how many Locations to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -3535,12 +3359,6 @@ export namespace Prisma {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["homePage"]>
 
-  export type HomePageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    businessId?: boolean
-    sections?: boolean
-    business?: boolean | BusinessDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["homePage"]>
 
   export type HomePageSelectScalar = {
     id?: boolean
@@ -3553,9 +3371,6 @@ export namespace Prisma {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
   export type HomePageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    business?: boolean | BusinessDefaultArgs<ExtArgs>
-  }
-  export type HomePageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     business?: boolean | BusinessDefaultArgs<ExtArgs>
   }
 
@@ -3772,36 +3587,6 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends HomePageUpdateManyArgs>(args: SelectSubset<T, HomePageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more HomePages and returns the data updated in the database.
-     * @param {HomePageUpdateManyAndReturnArgs} args - Arguments to update many HomePages.
-     * @example
-     * // Update many HomePages
-     * const homePage = await prisma.homePage.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more HomePages and only return the `id`
-     * const homePageWithIdOnly = await prisma.homePage.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends HomePageUpdateManyAndReturnArgs>(args: SelectSubset<T, HomePageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HomePagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one HomePage.
@@ -4288,40 +4073,6 @@ export namespace Prisma {
      * Filter which HomePages to update
      */
     where?: HomePageWhereInput
-    /**
-     * Limit how many HomePages to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * HomePage updateManyAndReturn
-   */
-  export type HomePageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the HomePage
-     */
-    select?: HomePageSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the HomePage
-     */
-    omit?: HomePageOmit<ExtArgs> | null
-    /**
-     * The data used to update HomePages.
-     */
-    data: XOR<HomePageUpdateManyMutationInput, HomePageUncheckedUpdateManyInput>
-    /**
-     * Filter which HomePages to update
-     */
-    where?: HomePageWhereInput
-    /**
-     * Limit how many HomePages to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: HomePageIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4384,10 +4135,6 @@ export namespace Prisma {
      * Filter which HomePages to delete
      */
     where?: HomePageWhereInput
-    /**
-     * Limit how many HomePages to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -4542,13 +4289,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4589,7 +4329,7 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Business"> | string | null
     faqs?: JsonNullableFilter<"Business">
     faqSchema?: StringNullableFilter<"Business"> | string | null
-    homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
+    homePage?: XOR<HomePageNullableRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }
 
@@ -4642,7 +4382,7 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Business"> | string | null
     faqs?: JsonNullableFilter<"Business">
     faqSchema?: StringNullableFilter<"Business"> | string | null
-    homePage?: XOR<HomePageNullableScalarRelationFilter, HomePageWhereInput> | null
+    homePage?: XOR<HomePageNullableRelationFilter, HomePageWhereInput> | null
     locations?: LocationListRelationFilter
   }, "id">
 
@@ -4705,7 +4445,7 @@ export namespace Prisma {
     id?: StringFilter<"Location"> | string
     businessId?: StringFilter<"Location"> | string
     locations?: JsonFilter<"Location">
-    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
   }
 
   export type LocationOrderByWithRelationInput = {
@@ -4722,7 +4462,7 @@ export namespace Prisma {
     NOT?: LocationWhereInput | LocationWhereInput[]
     businessId?: StringFilter<"Location"> | string
     locations?: JsonFilter<"Location">
-    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
   }, "id">
 
   export type LocationOrderByWithAggregationInput = {
@@ -4750,7 +4490,7 @@ export namespace Prisma {
     id?: StringFilter<"HomePage"> | string
     businessId?: StringFilter<"HomePage"> | string
     sections?: JsonFilter<"HomePage">
-    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
   }
 
   export type HomePageOrderByWithRelationInput = {
@@ -4767,7 +4507,7 @@ export namespace Prisma {
     OR?: HomePageWhereInput[]
     NOT?: HomePageWhereInput | HomePageWhereInput[]
     sections?: JsonFilter<"HomePage">
-    business?: XOR<BusinessScalarRelationFilter, BusinessWhereInput>
+    business?: XOR<BusinessRelationFilter, BusinessWhereInput>
   }, "id" | "businessId">
 
   export type HomePageOrderByWithAggregationInput = {
@@ -5063,13 +4803,12 @@ export namespace Prisma {
   export type JsonNullableFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -5092,7 +4831,7 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type HomePageNullableScalarRelationFilter = {
+  export type HomePageNullableRelationFilter = {
     is?: HomePageWhereInput | null
     isNot?: HomePageWhereInput | null
   }
@@ -5200,13 +4939,12 @@ export namespace Prisma {
   export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -5244,13 +4982,12 @@ export namespace Prisma {
   export type JsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -5258,7 +4995,7 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type BusinessScalarRelationFilter = {
+  export type BusinessRelationFilter = {
     is?: BusinessWhereInput
     isNot?: BusinessWhereInput
   }
@@ -5288,13 +5025,12 @@ export namespace Prisma {
   export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -5507,13 +5243,12 @@ export namespace Prisma {
   export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -5547,13 +5282,12 @@ export namespace Prisma {
   export type NestedJsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
