@@ -77,7 +77,7 @@ export default async function Page({
   const locations = await getLocations({ id });
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-20 px-4">
       <div className="flex gap-2">
         <ThemePicker id={id} initTheme={business.theme} />
         <UploadLogo businessId={id} currentLogo={business.logo || ""} />
