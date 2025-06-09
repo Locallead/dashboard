@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "sonner";
@@ -36,15 +36,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <Toaster />
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <div>
+      <Toaster />
+      <SidebarProvider>
+        <div className="flex min-h-screen w-full overflow-hidden">
+          <SidebarWrapper />
+          <div className="flex-1 flex flex-col w-full">
+            <header className="h-14 border-b px-4 flex items-center">
+              <h1 className="text-lg font-medium">Site Builder</h1>
+            </header>
+            {children}
+          </div>
+        </div>
+      </SidebarProvider>
+    </div>
   );
 }

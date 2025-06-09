@@ -13,10 +13,13 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 import { deleteBusiness } from "@/app/actions";
 import { Business } from "@/app/generated/prisma";
 import { SidebarItem } from "./sidebar-menu-item";
+import { SignOutButton, UserButton } from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 interface AppSidebarProps {
   businesses: Business[];
@@ -34,7 +37,9 @@ export function AppSidebar({ businesses }: AppSidebarProps) {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>
+            <UserButton />
+          </SidebarGroupLabel>
           <SidebarHeader className="bg-primary rounded-md my-2 py-2 text-white">
             <Link href="/" className="flex items-center gap-2">
               <Plus className="w-4 h-4 block" />
@@ -64,6 +69,13 @@ export function AppSidebar({ businesses }: AppSidebarProps) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SignOutButton>
+          <Button className="text-sm text-center cursor-pointer border">
+            Sign Out
+          </Button>
+        </SignOutButton>
+      </SidebarFooter>
     </Sidebar>
   );
 }
