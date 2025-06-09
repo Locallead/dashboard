@@ -1,12 +1,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
+import {
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarFooter,
+} from "@/components/ui/sidebar";
 import { Trash } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
+import { SignOutButton } from "@clerk/nextjs";
 
 interface SidebarItemProps {
   title: string;
