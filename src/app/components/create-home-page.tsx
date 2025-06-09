@@ -242,7 +242,7 @@ export default function CreateHomePage({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full border border-secondary rounded-md p-4">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Create Home Page</h1>
         <Button onClick={generateHomePageContent} disabled={isGenerating}>
